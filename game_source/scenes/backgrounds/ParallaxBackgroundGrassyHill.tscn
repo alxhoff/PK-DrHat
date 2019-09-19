@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/backgrounds/ParallaxBackgroundGrassyHill.gd" type="Script" id=1]
+[ext_resource path="res://sprites/environment/sky.png" type="Texture" id=2]
+[ext_resource path="res://sprites/environment/clouds.png" type="Texture" id=3]
+[ext_resource path="res://sprites/environment/far-grounds.png" type="Texture" id=4]
+[ext_resource path="res://sprites/environment/sea.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "moveBackground"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParallaxLayer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 20, 0 ), Vector2( 0, 0 ), Vector2( 20, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ParallaxLayer2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 30, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ParallaxLayer3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 50, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ParallaxLayer4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( -0.1, 2.5, 5, 7.6, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 75, 0 ), Vector2( 50, 10 ), Vector2( 0, 0 ), Vector2( 36, 10 ), Vector2( 75, 0 ) ]
+}
+
+[node name="ParallaxBackgroundGrassyHill" type="ParallaxBackground"]
+script = ExtResource( 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.1, 0.1 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -59.0
+margin_right = 824.0
+margin_bottom = 245.0
+size_flags_horizontal = 3
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.15, 0.15 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer2"]
+margin_left = -230.0
+margin_top = 63.0
+margin_right = 761.0
+margin_bottom = 299.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.18, 0.18 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer3"]
+margin_left = -79.0
+margin_top = 155.0
+margin_right = 537.0
+margin_bottom = 265.0
+rect_scale = Vector2( 1, 1.5 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+stretch_mode = 2
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+position = Vector2( 75, 0 )
+motion_scale = Vector2( 0.2, 0.2 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer4"]
+margin_left = -287.0
+margin_top = 271.0
+margin_right = 807.0
+margin_bottom = 367.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/moveBackground = SubResource( 1 )
