@@ -1,6 +1,6 @@
 extends Node2D
 
-const CHAR_SPEECH_TIME = 0.15
+const CHAR_SPEECH_TIME = 0.1
 
 signal current_text_finished
 

@@ -1,6 +1,6 @@
 extends Node
 
-var intro_strings = ["Hello Philipp", "....", "I am Amla the mistress of riddles",
+var intro_strings = ["Hello Philipp..", "I am Amla the mistress of riddles",
 "...I'm not feeling that pretty...", "...", "Much better!!"]
 
 var string_index = 0

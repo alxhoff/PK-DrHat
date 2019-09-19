@@ -1,5 +1,5 @@
 extends ParallaxBackground
 
-func _ready():
+func _physics_process(delta):
 	$AnimationPlayer.play("moveBackground")
 	pass
