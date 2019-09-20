@@ -101,9 +101,6 @@ script = ExtResource( 1 )
 position = Vector2( 45.7152, 102.641 )
 scale = Vector2( 7, 7 )
 
-[node name="AnimatedSprite" parent="Player" index="0"]
-frame = 7
-
 [node name="Guide" parent="." instance=ExtResource( 4 )]
 position = Vector2( 444.978, 126.034 )
 scale = Vector2( 5, 5 )

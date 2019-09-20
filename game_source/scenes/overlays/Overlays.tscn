@@ -1,51 +1,21 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/overlays/Overlays.gd" type="Script" id=1]
 [ext_resource path="res://sprites/backgrounds/black_bg.png" type="Texture" id=2]
-[ext_resource path="res://scenes/overlays/Item.shader" type="Shader" id=3]
-[ext_resource path="res://sprites/items/Item__68.png" type="Texture" id=4]
-[ext_resource path="res://sprites/items/Item__07.png" type="Texture" id=5]
-[ext_resource path="res://sprites/items/Item__50.png" type="Texture" id=6]
-[ext_resource path="res://sprites/items/Item__60.png" type="Texture" id=7]
-[ext_resource path="res://sprites/items/Item__45.png" type="Texture" id=8]
-[ext_resource path="res://sprites/items/Item__59.png" type="Texture" id=9]
-[ext_resource path="res://sprites/items/Item__36.png" type="Texture" id=10]
-[ext_resource path="res://scenes/player/AnimatedPlayerSprite.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/player/items/ToggleItem.tscn" type="PackedScene" id=3]
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 3 )
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 3 )
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 3 )
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 3 )
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 3 )
-
-[sub_resource type="ShaderMaterial" id=7]
-shader = ExtResource( 3 )
-
-[sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 3 )
-
-[node name="Overlays" type="Node"]
+[node name="Items" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="Items" type="CanvasLayer" parent="."]
-
-[node name="MarginUI" type="MarginContainer" parent="Items"]
+[node name="MarginUI" type="MarginContainer" parent="."]
 anchor_right = 1.0
 margin_bottom = 80.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_constants/margin_top = 30
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Items/MarginUI"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginUI"]
+modulate = Color( 0.180392, 0.25098, 0.611765, 0.333333 )
 margin_left = 25.0
 margin_top = 35.0
 margin_right = 455.0
@@ -59,7 +29,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Border" type="MarginContainer" parent="Items/MarginUI"]
+[node name="Border" type="MarginContainer" parent="MarginUI"]
 margin_left = 25.0
 margin_top = 30.0
 margin_right = 455.0
@@ -71,8 +41,7 @@ custom_constants/margin_top = 10
 custom_constants/margin_left = 10
 custom_constants/margin_bottom = 10
 
-[node name="HBoxItems" type="HBoxContainer" parent="Items/MarginUI/Border"]
-editor/display_folded = true
+[node name="HBoxItems" type="HBoxContainer" parent="MarginUI/Border"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 420.0
@@ -83,185 +52,35 @@ size_flags_vertical = 0
 custom_constants/separation = 10
 alignment = 1
 
-[node name="MarginKey" type="MarginContainer" parent="Items/MarginUI/Border/HBoxItems"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_constants/margin_right = 2
-custom_constants/margin_top = 2
-custom_constants/margin_left = 2
-custom_constants/margin_bottom = 2
+[node name="Key" parent="MarginUI/Border/HBoxItems" instance=ExtResource( 3 )]
+sprite_path = "res://sprites/items/Item__68.png"
 
-[node name="Key" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginKey"]
-material = SubResource( 2 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 4 )
-centered = false
-
-[node name="KeyRGB" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginKey"]
-scale = Vector2( 3, 3 )
-texture = ExtResource( 4 )
-centered = false
-
-[node name="MarginSword" type="MarginContainer" parent="Items/MarginUI/Border/HBoxItems"]
+[node name="Sword" parent="MarginUI/Border/HBoxItems" instance=ExtResource( 3 )]
 margin_left = 60.0
 margin_right = 110.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_constants/margin_right = 2
-custom_constants/margin_top = 2
-custom_constants/margin_left = 2
-custom_constants/margin_bottom = 2
+sprite_path = "res://sprites/items/Item__07.png"
 
-[node name="Sword" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginSword"]
-material = SubResource( 3 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 5 )
-centered = false
-
-[node name="SwordRGB" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginSword"]
-scale = Vector2( 3, 3 )
-texture = ExtResource( 5 )
-centered = false
-
-[node name="MarginBoots" type="MarginContainer" parent="Items/MarginUI/Border/HBoxItems"]
+[node name="Boots" parent="MarginUI/Border/HBoxItems" instance=ExtResource( 3 )]
 margin_left = 120.0
 margin_right = 170.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_constants/margin_right = 2
-custom_constants/margin_top = 2
-custom_constants/margin_left = 2
-custom_constants/margin_bottom = 2
+sprite_path = "res://sprites/items/Item__50.png"
 
-[node name="Boots" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginBoots"]
-material = SubResource( 4 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 6 )
-centered = false
-
-[node name="BootsRGB" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginBoots"]
-scale = Vector2( 3, 3 )
-texture = ExtResource( 6 )
-centered = false
-
-[node name="MarginGloves" type="MarginContainer" parent="Items/MarginUI/Border/HBoxItems"]
+[node name="Gloves" parent="MarginUI/Border/HBoxItems" instance=ExtResource( 3 )]
 margin_left = 180.0
 margin_right = 230.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_constants/margin_right = 2
-custom_constants/margin_top = 2
-custom_constants/margin_left = 2
-custom_constants/margin_bottom = 2
+sprite_path = "res://sprites/items/Item__60.png"
 
-[node name="Gloves" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginGloves"]
-material = SubResource( 5 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 7 )
-centered = false
-
-[node name="GlovesRGB" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginGloves"]
-scale = Vector2( 3, 3 )
-texture = ExtResource( 7 )
-centered = false
-
-[node name="MarginHelmet" type="MarginContainer" parent="Items/MarginUI/Border/HBoxItems"]
+[node name="Helmet" parent="MarginUI/Border/HBoxItems" instance=ExtResource( 3 )]
 margin_left = 240.0
 margin_right = 290.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_constants/margin_right = 2
-custom_constants/margin_top = 2
-custom_constants/margin_left = 2
-custom_constants/margin_bottom = 2
+sprite_path = "res://sprites/items/Item__45.png"
 
-[node name="Helmet" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginHelmet"]
-material = SubResource( 6 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 8 )
-centered = false
-
-[node name="HelmetRGB" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginHelmet"]
-scale = Vector2( 3, 3 )
-texture = ExtResource( 8 )
-centered = false
-
-[node name="MarginChest" type="MarginContainer" parent="Items/MarginUI/Border/HBoxItems"]
+[node name="Chest" parent="MarginUI/Border/HBoxItems" instance=ExtResource( 3 )]
 margin_left = 300.0
 margin_right = 350.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_constants/margin_right = 2
-custom_constants/margin_top = 2
-custom_constants/margin_left = 2
-custom_constants/margin_bottom = 2
+sprite_path = "res://sprites/items/Item__59.png"
 
-[node name="Chest" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginChest"]
-material = SubResource( 7 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 9 )
-centered = false
-
-[node name="ChestRGB" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginChest"]
-scale = Vector2( 3, 3 )
-texture = ExtResource( 9 )
-centered = false
-
-[node name="MarginPhD" type="MarginContainer" parent="Items/MarginUI/Border/HBoxItems"]
+[node name="PhD" parent="MarginUI/Border/HBoxItems" instance=ExtResource( 3 )]
 margin_left = 360.0
 margin_right = 410.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_constants/margin_right = 2
-custom_constants/margin_top = 2
-custom_constants/margin_left = 2
-custom_constants/margin_bottom = 2
-
-[node name="PhD" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginPhD"]
-material = SubResource( 8 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 10 )
-centered = false
-
-[node name="PhDRGB" type="Sprite" parent="Items/MarginUI/Border/HBoxItems/MarginPhD"]
-scale = Vector2( 3, 3 )
-texture = ExtResource( 10 )
-centered = false
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -238.452
-margin_top = -159.226
-margin_right = 241.548
-margin_bottom = 160.774
-rect_min_size = Vector2( 480, 320 )
-alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
-margin_left = 240.0
-margin_right = 240.0
-margin_bottom = 320.0
-
-[node name="AnimatedPlayerSprite" parent="CanvasLayer/HBoxContainer/MarginContainer" instance=ExtResource( 11 )]
-position = Vector2( -240, 0 )
-frame = 5
+sprite_path = "res://sprites/items/Item__36.png"

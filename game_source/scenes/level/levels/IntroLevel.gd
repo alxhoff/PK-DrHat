@@ -16,7 +16,7 @@ var intro_strings = [
 "Each has its own fun open source sprite...", 
 "For example this bad boy...",
 "",
-"At the end of it all is a shinny PhD...", 
+"At the end of it all is a shiny PhD...", 
 "Or at least so I have been told...",
 "Take this and enjoy the adventure",
 ""
