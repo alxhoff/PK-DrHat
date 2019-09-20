@@ -17,6 +17,7 @@ func busy():
 	
 func morph():
 	$AnimatedSprite/AnimationPlayer.play("Morph")
+	$SpeachBubble.set_pitch_high(true)
 	
 func become_wizzard():
 	$AnimatedSprite.play("Wizzard")
@@ -38,6 +39,8 @@ func show_gloves():
 	$DisplayItem.visible = true
 	
 func show_key():
-	$DisplayItem.set_texture(preload("res://sprites/items/Item__69.png"))
-	$DisplayItem/AnimationPlayer.play("ShakeGloves")
+	$DisplayItem.set_texture(preload("res://sprites/items/Item__68.png"))
+	$DisplayItem/AnimationPlayer.play("GiveItem")
+	$AudioStreamPlayer2D.set_stream(preload("res://audio/effects/magic.wav"))
+	$AudioStreamPlayer2D.play(0)
 	$DisplayItem.visible = true

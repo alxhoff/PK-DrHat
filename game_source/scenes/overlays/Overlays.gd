@@ -1,41 +1,68 @@
 extends Node
 
+onready var keyRGB = $Items/MarginUI/Border/HBoxItems/MarginKey/KeyRGB
+onready var key = $Items/MarginUI/Border/HBoxItems/MarginKey/Key
+onready var swordRGB = $Items/MarginUI/Border/HBoxItems/MarginSword/SwordRGB
+onready var sword = $Items/MarginUI/Border/HBoxItems/MarginSword/Sword
+onready var bootsRGB = $Items/MarginUI/Border/HBoxItems/MarginBoots/BootsRGB
+onready var boots = $Items/MarginUI/Border/HBoxItems/MarginBoots/Boots
+onready var glovesRGB = $Items/MarginUI/Border/HBoxItems/MarginGloves/GlovesRGB
+onready var gloves = $Items/MarginUI/Border/HBoxItems/MarginGloves/Gloves
+onready var helmetRGB = $Items/MarginUI/Border/HBoxItems/MarginHelmet/HelmetRGB
+onready var helmet = $Items/MarginUI/Border/HBoxItems/MarginHelmet/Helmet
+onready var chestRGB = $Items/MarginUI/Border/HBoxItems/MarginChest/ChestRGB
+onready var chest = $Items/MarginUI/Border/HBoxItems/MarginChest/Chest
+onready var phdRGB = $Items/MarginUI/Border/HBoxItems/MarginPhD/PhDRGB
+onready var phd = $Items/MarginUI/Border/HBoxItems/MarginPhD/PhD
+
 func _ready():
 	display_items(0)
-	pass
+	all_visible(false)
+	
+func all_visible(value):
+	keyRGB.visible = value
+	key.visible = value
+	swordRGB.visible = value
+	sword.visible = value
+	bootsRGB.visible = value
+	boots.visible = value
+	glovesRGB.visible = value
+	gloves.visible = value
+	helmetRGB.visible = value
+	helmet.visible = value
+	chestRGB.visible = value
+	chest.visible = value
+	phdRGB.visible = value
+	phd.visible = value
+	
 	
 func display_items(count):
-	var key = $Inventory/MarginUI/HBoxItems/MarginKey/Key
-	var sword = $Inventory/MarginUI/HBoxItems/MarginSword/Sword
-	var boots = $Inventory/MarginUI/HBoxItems/MarginBoots/Boots
-	var gloves = $Inventory/MarginUI/HBoxItems/MarginGloves/Gloves
-	var helmet = $Inventory/MarginUI/HBoxItems/MarginHelmet/Helmet
-	var chest = $Inventory/MarginUI/HBoxItems/MarginChest/Chest
-	var phd = $Inventory/MarginUI/HBoxItems/MarginPhD/PhD
-	
-	key.visible = false
-	sword.visible = false
-	boots.visible = false
-	gloves.visible = false
-	helmet.visible = false
-	chest.visible = false
-	phd.visible = false
-	
 	if count >= 7:
-		phd.visible = true
+		phdRGB.visible = true
+		phd.visible = false
 	if count >= 6:
-		chest.visible = true
+		chestRGB.visible = true
+		chest.visible = false
 	if count >= 5:
-		helmet.visible = true
+		helmetRGB.visible = true
+		helmet.visible = false
 	if count >= 4:
-		gloves.visible = true
+		glovesRGB.visible = true
+		gloves.visible = false
 	if count >= 3:
-		boots.visible = true
+		bootsRGB.visible = true
+		boots.visible = false
 	if count >= 2:
-		sword.visible = true
+		swordRGB.visible = true
+		sword.visible = false
 	if count >= 1:
-		key.visible = true
+		keyRGB.visible = true
+		key.visible = false
 
 
 func _on_Items_item_count_changed(count):
+	display_items(count)
+
+
+func _on_Items_item_count_updated(count):
 	display_items(count)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/player/SpeachBubble.gd" type="Script" id=1]
+[ext_resource path="res://audio/effects/low_beep.wav" type="AudioStream" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://fonts/Kenney Pixel Square.ttf"
@@ -31,5 +32,8 @@ autostart = true
 
 [node name="WaitTimer" type="Timer" parent="SpeechBubble"]
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
 [connection signal="timeout" from="SpeechBubble/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="SpeechBubble/WaitTimer" to="." method="_on_WaitTimer_timeout"]

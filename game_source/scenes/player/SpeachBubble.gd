@@ -10,6 +10,7 @@ var str_length = 0
 func _ready():
 	$SpeechBubble.visible_characters = 0
 	$SpeechBubble/Timer.set_wait_time(CHAR_SPEECH_TIME)
+	$AudioStreamPlayer2D.set_stream(preload("res://audio/effects/low_beep.wav"))
 	pass
 
 func _on_Timer_timeout():
@@ -20,6 +21,7 @@ func say_text(text, final_delay):
 	str_length = str(text).length()
 	speaking = true
 	show_text(true)
+	$AudioStreamPlayer2D.play(0)
 	$SpeechBubble.text = text
 	$SpeechBubble.visible_characters = 0
 	wait(str_length, final_delay)
@@ -35,3 +37,9 @@ func show_text(value):
 
 func _on_WaitTimer_timeout():
 	speaking = false
+	
+func set_pitch_high(value):
+	if value:
+		$AudioStreamPlayer2D.set_stream(preload("res://audio/effects/high_beep.wav"))
+	else:
+		$AudioStreamPlayer2D.set_stream(preload("res://audio/effects/low_beep.wav"))

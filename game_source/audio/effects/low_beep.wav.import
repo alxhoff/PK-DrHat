@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/low_beep.wav-f67efb55b90d9134266635c1c4a4e743.sample"
+
+[deps]
+
+source_file="res://audio/effects/low_beep.wav"
+dest_files=[ "res://.import/low_beep.wav-f67efb55b90d9134266635c1c4a4e743.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

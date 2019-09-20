@@ -5,20 +5,19 @@ signal key_given
 var intro_strings = [
 "Hello Philipp...", 
 "I am Amla the mistress of riddles",
-"but I seem to of lost my magic...", 
+"but I seem to have lost my magic...", 
 "...", 
 "Much better", 
 "Now we have prepared a challenge",
 "And we have a number of delicious...", 
-"RIDDLESSSSS for you", 
-"#riddles",
+"#RIDDLESSSSS", 
 "But what you really need to do", 
 "Is collect all the hidden beacons",
 "Each has its own fun open source sprite...", 
 "For example this bad boy...",
 "",
 "At the end of it all is a shinny PhD...", 
-"Or at least so I have been told.",
+"Or at least so I have been told...",
 "Take this and enjoy the adventure",
 ""
 ]
@@ -28,6 +27,9 @@ var level_complete = false
 
 func _ready():
 	pass
+	
+func give_key():
+	emit_signal("key_given")
 	
 func _physics_process(delta):
 	print(string_index)
@@ -39,15 +41,14 @@ func _physics_process(delta):
 				if string_index == 4:
 					$Guide.morph()
 					$Guide.delay(2)
-				if string_index == 14:
+				if string_index == 13:
 					$Guide.show_gloves()
 					$Guide.delay(2)
-				if string_index == 15:
+				if string_index == 14:
 					$Guide.hide_item()
-				if string_index == 18:
+				if string_index == 17:
 					$Guide.show_key()
-					emit_signal("key_given")
-					$Guide.delay(4)
+					$Guide.delay(3)
 			else:
 				$Guide.stop_talking()
 				$Guide.hide_item()
