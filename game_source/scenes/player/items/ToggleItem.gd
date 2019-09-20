@@ -1,6 +1,6 @@
 extends MarginContainer
 
-export var sprite_path = ""
+export (Texture) var sprite_path = null
 
 var ready = false
 
@@ -18,7 +18,7 @@ func enable(value):
 			$BW.visible = true
 
 func _ready():
-	if sprite_path != "":
-		$BW.set_texture(load(sprite_path))
-		$RGB.set_texture(load(sprite_path))
+	if sprite_path:
+		$BW.set_texture(load(str(sprite_path)))
+		$RGB.set_texture(load(str(sprite_path)))
 		ready = true

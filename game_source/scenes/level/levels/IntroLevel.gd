@@ -22,7 +22,7 @@ var intro_strings = [
 ""
 ]
 
-var string_index = 0
+var string_index = 17
 var level_complete = false
 
 func _ready():
@@ -32,7 +32,6 @@ func give_key():
 	emit_signal("key_given")
 	
 func _physics_process(delta):
-	print(string_index)
 	if $Guide.ready == true && level_complete == false:
 		if $Guide.busy() == false:
 			if string_index < intro_strings.size():

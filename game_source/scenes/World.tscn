@@ -12,9 +12,9 @@ script = ExtResource( 1 )
 
 [node name="Level" parent="." instance=ExtResource( 2 )]
 
-[node name="IntroLevel" parent="Level" instance=ExtResource( 3 )]
+[node name="CurrentLevel" parent="Level" instance=ExtResource( 3 )]
 
-[node name="AnimatedSprite" parent="Level/IntroLevel/Player" index="0"]
+[node name="AnimatedSprite" parent="Level/CurrentLevel/Player" index="0"]
 frame = 1
 
 [node name="ItemsUI" parent="." instance=ExtResource( 4 )]
@@ -23,10 +23,9 @@ frame = 1
 script = ExtResource( 5 )
 
 [node name="Inventory" parent="." instance=ExtResource( 6 )]
-[connection signal="key_given" from="Level/IntroLevel" to="Items" method="_on_IntroLevel_key_given"]
-[connection signal="item_count_changed" from="Level/IntroLevel/Player/Items" to="ItemsUI" method="_on_Items_item_count_changed"]
+[connection signal="key_given" from="Level/CurrentLevel" to="Items" method="_on_IntroLevel_key_given"]
 [connection signal="item_count_updated" from="Items" to="ItemsUI" method="_on_Items_item_count_updated"]
 
-[editable path="Level/IntroLevel"]
+[editable path="Level/CurrentLevel"]
 
-[editable path="Level/IntroLevel/Player"]
+[editable path="Level/CurrentLevel/Player"]
