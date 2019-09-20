@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/level/levels/IntroLevel.gd" type="Script" id=1]
-[ext_resource path="res://scenes/backgrounds/ParallaxBackgroundGrassyHill.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/player/Guide.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/tilesets/MagicForest.tres" type="TileSet" id=5]
-[ext_resource path="res://audio/background.wav" type="AudioStream" id=6]
+[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/player/Guide.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/tilesets/MagicForest.tres" type="TileSet" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "GiveItem"
@@ -51,7 +49,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-length = 4.0
+length = 4.5
 step = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Player/AnimatedSprite:flip_h")
@@ -72,10 +70,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 4, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 45.7152, 102.641 ), Vector2( -50, 102.641 ) ]
+"values": [ Vector2( -10, 20 ), Vector2( -150, 20 ), Vector2( -300, 20 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath("../Player")
@@ -95,15 +93,19 @@ tracks/2/keys = {
 [node name="IntroLevel" type="Node"]
 script = ExtResource( 1 )
 
-[node name="ParallaxBackgroundGrassyHill" parent="." instance=ExtResource( 2 )]
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 45.7152, 102.641 )
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -10, 20 )
 scale = Vector2( 7, 7 )
 
-[node name="Guide" parent="." instance=ExtResource( 4 )]
+[node name="AnimatedSprite" parent="Player" index="0"]
+flip_h = true
+
+[node name="Guide" parent="." instance=ExtResource( 3 )]
 position = Vector2( 444.978, 126.034 )
 scale = Vector2( 5, 5 )
+
+[node name="AnimatedSprite" parent="Guide" index="0"]
+frame = 1
 
 [node name="DisplayItem" parent="Guide" index="4"]
 position = Vector2( -60, -7.167 )
@@ -117,15 +119,10 @@ anims/LeaveScreen = SubResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 1.5, 1.5 )
-tile_set = ExtResource( 5 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 589823, 0, 0, 524302, 3, 0, 524305, 4, 0, 524306, 4, 0, 524307, 4, 0, 524308, 4, 0, 589828, 5, 0 )
-
-[node name="BackgrounMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = -12.0
-autoplay = true
 
 [editable path="Player"]
 
