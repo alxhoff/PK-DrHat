@@ -62,3 +62,4 @@ func _on_Timer_timeout():
 
 func _on_Items_show_inventory_items(count):
 	show(true, count)
+	$Timer.start()

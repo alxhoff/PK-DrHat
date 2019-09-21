@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
-[ext_resource path="res://AnimatedPlayerSprite.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/player/AnimatedPlayerSprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/player/Items.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -15,7 +15,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 2 )]
 position = Vector2( -20, -20 )
-frame = 9
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

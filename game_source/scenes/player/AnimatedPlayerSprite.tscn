@@ -116,5 +116,5 @@ animations = [ {
 [node name="AnimatedPlayerSprite" type="AnimatedSprite"]
 frames = SubResource( 8 )
 animation = "ShowBadge"
-frame = 10
+frame = 2
 playing = true
