@@ -20,7 +20,7 @@ func _on_Player_level_completed():
 	current_level_node.queue_free()
 	var next_level = null
 	
-	if current_level == INTRO:
+	if current_level == INTRO or current_level == INFO:
 		var next_level_resource = load("res://scenes/level/levels/ExploreLevel.tscn")
 		next_level = next_level_resource.instance()
 		current_level = SEARCHING
@@ -28,17 +28,29 @@ func _on_Player_level_completed():
 		add_child(next_level)
 		
 	elif current_level == SEARCHING:
-		var next_level_resource = load("res://scenes/level/levels/ItemReceiveLevel.tscn")
+		var ic = get_parent().find_node("Items").item_count
+		var next_level_resource = null
+		if ic == 6:
+			next_level_resource = load("res://scenes/level/levels/ItemReceiveLevel.tscn") #TODO FINAL LEVEL
+			current_level = FINISHED
+		else:
+			next_level_resource = load("res://scenes/level/levels/ItemReceiveLevel.tscn")
+			current_level = INFO
+		
 		next_level = next_level_resource.instance()
-		current_level = INFO
 		next_level.name = "CurrentLevel"
 		add_child(next_level)
-		if get_parent().find_node("Items").item_count == 1:
+
+		if ic == 1:
 			next_level.init("sword", "res://sprites/items/Item__07.png")
-	
-	elif current_level == INFO:
-		pass
-		
+		elif ic == 2:
+			next_level.init("boots", "res://sprites/items/Item__50.png")
+		elif ic == 3:
+			next_level.init("gloves", "res://sprites/items/Item__60.png")
+		elif ic == 4:
+			next_level.init("helmet", "res://sprites/items/Item__45.png")
+		elif ic == 5:
+			next_level.init("chest", "res://sprites/items/Item__59.png")
 		
 	
 	

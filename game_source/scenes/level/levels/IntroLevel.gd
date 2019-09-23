@@ -1,6 +1,5 @@
 extends Node
 
-signal increment_item_count
 
 var intro_strings = [
 "Hello Philipp...", 
@@ -14,7 +13,7 @@ var intro_strings = [
 "But what you really need to do", 
 "Is collect all the hidden beacons",
 "Each has its own fun open source sprite...", 
-"For example this bad boy...",
+"For example this rejected paper...",
 "",
 "At the end of it all is a shiny PhD...", 
 "Or at least so I have been told...",
@@ -22,16 +21,14 @@ var intro_strings = [
 ""
 ]
 
-var string_index = 17
+var string_index = 0
 var level_complete = false
 
+var paper_sprite = preload("res://sprites/items/Item__38.png")
+var key_sprite = preload("res://sprites/items/Item__68.png")
+
 func _ready():
-	connect("increment_item_count", get_tree().get_root().get_node("World").find_node("Items"), 
-	"_on_ItemCount_incremented")
-	pass
-	
-func give_key():
-	emit_signal("increment_item_count")
+	$Player/AnimatedSprite.flip_h = false
 	
 func _physics_process(delta):
 	if $Guide.ready == true && level_complete == false:
@@ -43,13 +40,16 @@ func _physics_process(delta):
 					$Guide.morph()
 					$Guide.delay(2)
 				if string_index == 13:
-					$Guide.show_gloves()
+					$Guide.show_item(paper_sprite)
 					$Guide.delay(2)
 				if string_index == 14:
 					$Guide.hide_item()
 				if string_index == 17:
-					$Guide.show_key()
+					$Guide.give_item(key_sprite)
 					$Guide.delay(3)
+					$Player.increment_items()
+					print("Signal emitted")
+
 			else:
 				$Guide.stop_talking()
 				$Guide.hide_item()
@@ -58,3 +58,7 @@ func _physics_process(delta):
 func level_finished():
 	level_complete = true
 	$Guide/AnimationPlayer.play("WalkOut")
+
+
+func _on_Items_UI_item_count_updated(count):
+	pass # Replace with function body.

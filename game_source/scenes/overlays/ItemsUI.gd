@@ -12,7 +12,7 @@ onready var bg = $MarginUI/NinePatchRect
 func _ready():
 	display_items(0)
 	all_visible(false)
-	
+
 func all_enabled(value):
 	key.enable(value)
 	sword.enable(value)
@@ -22,7 +22,11 @@ func all_enabled(value):
 	chest.enable(value)
 	phd.enable(value)
 	
+func all_hidden():
+	all_visible(false)
+
 func all_visible(value):
+	$MarginUI.visible = value
 	key.visible(value)
 	sword.visible(value)
 	boots.visible(value)
@@ -31,11 +35,11 @@ func all_visible(value):
 	chest.visible(value)
 	phd.visible(value)
 	bg.visible = value
-	
+
 func display_items(count):
 	all_visible(true)
 	all_enabled(false)
-	
+
 	if count >= 7:
 		phd.enable(true)
 	if count >= 6:
@@ -50,8 +54,11 @@ func display_items(count):
 		sword.enable(true)
 	if count >= 1:
 		key.enable(true)
-	
+		
+
+
 func _on_Items_UI_item_count_updated(count):
+	print("Displaying update")
 	display_items(count)
 	$Timer.start()
 

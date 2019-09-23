@@ -32,6 +32,10 @@ func init(item, item_sprite_path):
 ]
 	level_ready = true
 	
+func give_item():
+	emit_signal("increment_item_count")
+	
+	
 func _physics_process(delta):
 	if level_ready:
 		if $Guide.ready == true && level_complete == false:
@@ -45,13 +49,12 @@ func _physics_process(delta):
 					
 					if string_index == 5:
 						$Guide.show_item(item_sprite)
-						$Guide.delay(2)
+						$Guide.delay(3)
+						give_item()
 					if string_index == 6:
 						$Guide.hide_item()
-	
 				else:
 					$Guide.stop_talking()
-					$Guide.hide_item()
 					level_finished()
 				
 func level_finished():

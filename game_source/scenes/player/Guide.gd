@@ -33,23 +33,13 @@ func _on_Timer_timeout():
 func hide_item():
 	$DisplayItem.visible = false
 
-func show_item(item):
+func give_item(item):
 	$DisplayItem.visible = true
-	var current_modulate = $DisplayItem.get_modulate()
-	current_modulate.a = 255
-	$DisplayItem.modulate = current_modulate
 	$DisplayItem.set_texture(item)
-	$DisplayItem/AnimationPlayer.play("ShakeGloves")
-
-func show_gloves():
-	$DisplayItem.set_texture(preload("res://sprites/items/Item__63.png"))
-	$DisplayItem.visible = true
-	$DisplayItem/AnimationPlayer.play("ShakeGloves")
-
-	
-func show_key():
-	$DisplayItem.set_texture(preload("res://sprites/items/Item__68.png"))
 	$DisplayItem/AnimationPlayer.play("GiveItem")
-	$AudioStreamPlayer2D.set_stream(preload("res://audio/effects/magic.wav"))
-	$AudioStreamPlayer2D.play(0)
+
+func show_item(item):
+	$DisplayItem.set_texture(item)
 	$DisplayItem.visible = true
+	$DisplayItem/AnimationPlayer.play("ShakeGloves")
+
