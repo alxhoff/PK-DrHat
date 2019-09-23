@@ -7,6 +7,7 @@
 extents = Vector2( 4.20041, 10.8314 )
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 200, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -14,7 +15,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 2 )]
 position = Vector2( -20, -20 )
-frame = 10
+frame = 5
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

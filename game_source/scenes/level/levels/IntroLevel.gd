@@ -1,6 +1,6 @@
 extends Node
 
-signal key_given
+signal increment_item_count
 
 var intro_strings = [
 "Hello Philipp...", 
@@ -26,10 +26,12 @@ var string_index = 17
 var level_complete = false
 
 func _ready():
+	connect("increment_item_count", get_tree().get_root().get_node("World").find_node("Items"), 
+	"_on_ItemCount_incremented")
 	pass
 	
 func give_key():
-	emit_signal("key_given")
+	emit_signal("increment_item_count")
 	
 func _physics_process(delta):
 	if $Guide.ready == true && level_complete == false:
@@ -55,4 +57,4 @@ func _physics_process(delta):
 				
 func level_finished():
 	level_complete = true
-	$Guide/AnimationPlayer.play("LeaveScreen")
+	$Guide/AnimationPlayer.play("WalkOut")

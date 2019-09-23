@@ -1,10 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/level/levels/IntroLevel.gd" type="Script" id=1]
+[ext_resource path="res://scenes/level/levels/ItemReceiveLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/player/Guide.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/PlayerAnimationPlayer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/tilesets/MagicForest.tres" type="TileSet" id=5]
+[ext_resource path="res://scenes/tilesets/MagicForest.tres" type="TileSet" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "GiveItem"
@@ -49,41 +48,17 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "WalkOut"
+[sub_resource type="Animation" id=3]
+resource_name = "EnterScreen"
 length = 4.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("../Player:position")
+tracks/0/type = "method"
+tracks/0/path = NodePath("../Player")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3.8, 4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -10, 20 ), Vector2( -200, 20 ), Vector2( -400, 20 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../Player/AnimatedSprite:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("../Player")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 4 ),
+"times": PoolRealArray( 0.1, 4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -93,15 +68,82 @@ tracks/2/keys = {
 "method": "idle"
 } ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -200, 20 ), Vector2( -10, 20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Player/AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[node name="IntroLevel" type="Node"]
+[sub_resource type="Animation" id=2]
+length = 4.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Player/AnimatedSprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10, 20 ), Vector2( -150, 20 ), Vector2( -300, 20 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../Player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "run"
+} ]
+}
+
+[node name="ItemReceiveLevel" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -10, 20 )
+position = Vector2( -300, 20 )
 scale = Vector2( 7, 7 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
+animation = "Idle"
 frame = 1
 flip_h = true
 
@@ -110,22 +152,23 @@ position = Vector2( 444.978, 126.034 )
 scale = Vector2( 5, 5 )
 
 [node name="AnimatedSprite" parent="Guide" index="0"]
-frame = 0
+animation = "Wizzard"
 
 [node name="DisplayItem" parent="Guide" index="4"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -60, -7.167 )
-rotation = -0.159513
+rotation = -0.174533
 
 [node name="AnimationPlayer" parent="Guide/DisplayItem" index="0"]
 anims/GiveItem = SubResource( 1 )
 
-[node name="AnimationPlayer" parent="Guide" instance=ExtResource( 4 )]
-anims/WalkOut = SubResource( 2 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guide"]
+anims/EnterScreen = SubResource( 3 )
+anims/LeaveScreen = SubResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 1.5, 1.5 )
-tile_set = ExtResource( 5 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 589823, 0, 0, 524302, 3, 0, 524305, 4, 0, 524306, 4, 0, 524307, 4, 0, 524308, 4, 0, 589828, 5, 0 )
