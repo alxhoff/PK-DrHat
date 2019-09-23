@@ -157,6 +157,7 @@ size_flags_vertical = 4
 custom_constants/separation = 40
 
 [node name="NP" type="NinePatchRect" parent="HBox/LHB"]
+show_behind_parent = true
 margin_right = 50.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 50, 55 )
@@ -169,6 +170,8 @@ patch_margin_bottom = 10
 [node name="Sword" parent="HBox/LHB/NP" instance=ExtResource( 4 )]
 margin_top = 4.0
 margin_bottom = 54.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -189,6 +192,8 @@ patch_margin_bottom = 10
 [node name="Boots" parent="HBox/LHB/NP1" instance=ExtResource( 4 )]
 margin_top = 4.0
 margin_bottom = 54.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 sprite_path = ExtResource( 6 )
 
 [node name="NP2" type="NinePatchRect" parent="HBox/LHB"]
@@ -205,6 +210,8 @@ patch_margin_bottom = 10
 [node name="Gloves" parent="HBox/LHB/NP2" instance=ExtResource( 4 )]
 margin_top = 4.0
 margin_bottom = 54.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 sprite_path = ExtResource( 7 )
 
 [node name="MarginContainer" type="MarginContainer" parent="HBox"]
@@ -220,7 +227,7 @@ custom_constants/margin_left = 0
 custom_constants/margin_bottom = 0
 
 [node name="AnimatedPlayerSprite" parent="HBox/MarginContainer" instance=ExtResource( 8 )]
-position = Vector2( -101.197, -124.853 )
+position = Vector2( -106.197, -123.853 )
 scale = Vector2( 8, 8 )
 frames = SubResource( 8 )
 animation = "LookUI2"
@@ -248,6 +255,8 @@ patch_margin_bottom = 10
 [node name="Helmet" parent="HBox/RHB/NP3" instance=ExtResource( 4 )]
 margin_top = 4.0
 margin_bottom = 54.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 sprite_path = ExtResource( 67 )
 
 [node name="NP4" type="NinePatchRect" parent="HBox/RHB"]
@@ -264,6 +273,8 @@ patch_margin_bottom = 10
 [node name="Chest" parent="HBox/RHB/NP4" instance=ExtResource( 4 )]
 margin_top = 4.0
 margin_bottom = 54.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 sprite_path = ExtResource( 68 )
 
 [node name="NP5" type="NinePatchRect" parent="HBox/RHB"]
@@ -280,6 +291,8 @@ patch_margin_bottom = 10
 [node name="Phd" parent="HBox/RHB/NP5" instance=ExtResource( 4 )]
 margin_top = 4.0
 margin_bottom = 54.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 sprite_path = ExtResource( 69 )
 
 [node name="Timer" type="Timer" parent="."]

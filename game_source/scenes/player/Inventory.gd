@@ -53,13 +53,13 @@ func show(value, count):
 	$HBox/RHB/NP3.visible = value
 	$HBox/RHB/NP4.visible = value
 	$HBox/RHB/NP5.visible = value
-	all_visible(value)
 	$Background.visible = value
+	all_visible(value)
 	display_items(count)
 
 func _on_Timer_timeout():
 	show(false, 0)
 
-func _on_Items_show_inventory_items(count):
+func _on_Items_inventory_item_count_updated(count):
 	show(true, count)
 	$Timer.start()

@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/AnimatedPlayerSprite.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/player/Items.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.20041, 10.8314 )
@@ -15,17 +14,14 @@ __meta__ = {
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 2 )]
 position = Vector2( -20, -20 )
+frame = 10
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 11.8463, 17.2181 )
 shape = SubResource( 1 )
 
-[node name="Items" type="Node" parent="."]
-script = ExtResource( 3 )
-
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 14.3592, 13.013 )
 rect = Rect2( -5, -5, 5, 20 )
-[connection signal="show_inventory" from="." to="Items" method="_on_Player_show_inventory"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

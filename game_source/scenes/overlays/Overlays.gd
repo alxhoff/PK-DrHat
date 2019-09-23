@@ -50,11 +50,10 @@ func display_items(count):
 		sword.enable(true)
 	if count >= 1:
 		key.enable(true)
-
-
-func _on_Items_item_count_changed(count):
+	
+func _on_Items_UI_item_count_updated(count):
 	display_items(count)
+	$Timer.start()
 
-
-func _on_Items_item_count_updated(count):
-	display_items(count)
+func _on_Timer_timeout():
+	$AnimationPlayer.play("fadeOut")

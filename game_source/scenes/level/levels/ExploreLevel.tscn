@@ -82,15 +82,21 @@ alignment = 1
 
 [node name="Signal" parent="MarginContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
 margin_left = 0.0
-margin_top = 45.0
+margin_top = 30.0
 margin_right = 200.0
-margin_bottom = 179.0
+margin_bottom = 164.0
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer2/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 184.0
+margin_right = 200.0
+margin_bottom = 289.0
+custom_constants/margin_top = 30
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer2/HBoxContainer/VBoxContainer/MarginContainer"]
 margin_left = 62.0
-margin_top = 199.0
+margin_top = 30.0
 margin_right = 137.0
-margin_bottom = 274.0
+margin_bottom = 105.0
 rect_min_size = Vector2( 75, 75 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -98,3 +104,4 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
 expand = true
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/MarginContainer/TextureButton" to="Player" method="show_inventory"]
