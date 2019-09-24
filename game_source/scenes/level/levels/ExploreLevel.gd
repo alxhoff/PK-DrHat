@@ -1,5 +1,7 @@
 extends Node
 
+const LEVEL_NAME = "Explore"
+
 func _ready():
 	$Player.position = Vector2(-200,37)
 	$AnimationPlayer.play("WalkIn")
@@ -14,3 +16,6 @@ func level_complete():
 
 func _on_Button_pressed():
 	level_complete()
+
+func set_signal(value):
+	$MarginContainer2/HBoxContainer/VBoxContainer/Signal.set_signal(value)

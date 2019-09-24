@@ -1,5 +1,7 @@
 extends Node
 
+const LEVEL_NAME = "Receive"
+
 signal increment_item_count
 
 var intro_strings = []

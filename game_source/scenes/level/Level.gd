@@ -53,3 +53,9 @@ func _on_Player_level_completed():
 		
 	
 	
+
+func _on_UDPServer_new_bt_rssi(device, strength):
+	var cur_level = $CurrentLevel
+	if cur_level.LEVEL_NAME == "Explore":
+		cur_level.set_signal(strength)
+

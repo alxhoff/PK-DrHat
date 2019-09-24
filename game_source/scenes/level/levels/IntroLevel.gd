@@ -1,5 +1,7 @@
 extends Node
 
+const LEVEL_NAME = "Intro"
+
 var intro_strings = [
 "Hello Philipp...", 
 "I am Amla the mistress of riddles",
@@ -20,7 +22,7 @@ var intro_strings = [
 ""
 ]
 
-var string_index = 0
+var string_index = 17
 var level_complete = false
 
 var paper_sprite = preload("res://sprites/items/Item__38.png")
