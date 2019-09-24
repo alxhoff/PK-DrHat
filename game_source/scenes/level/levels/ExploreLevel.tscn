@@ -18,7 +18,7 @@ position = Vector2( -10, 19.1426 )
 scale = Vector2( 9, 9 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 2
+frame = 9
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -66,13 +66,6 @@ z_index = -1
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 415.687, 231, 31.8569, 42 )
-
-[node name="Button" type="Button" parent="."]
-margin_left = 41.1651
-margin_top = 36.0194
-margin_right = 153.165
-margin_bottom = 56.0194
-text = "SKIP LEVEL TEST"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -137,6 +130,13 @@ dev_num = 5
 margin_top = 175.0
 margin_bottom = 199.0
 dev_num = 6
+
+[node name="Button" type="Button" parent="."]
+margin_left = 41.1651
+margin_top = 36.0194
+margin_right = 153.165
+margin_bottom = 56.0194
+text = "SKIP LEVEL TEST"
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_left = 174.779

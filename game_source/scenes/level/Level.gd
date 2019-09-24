@@ -50,9 +50,6 @@ func _on_Player_level_completed():
 			next_level.init("hot helmet", "res://sprites/items/Item__45.png")
 		elif ic == 5:
 			next_level.init("cheerful chest", "res://sprites/items/Item__59.png")
-		
-	
-	
 
 func _on_UDPServer_new_bt_rssi(device, strength):
 	var cur_level = $CurrentLevel

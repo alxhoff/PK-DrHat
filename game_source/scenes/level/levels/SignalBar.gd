@@ -8,3 +8,5 @@ func _ready():
 func display_signal(value):
 	$TextureProgress.value = value
 
+func set_granularity(step):
+	$TextureProgress.step = step

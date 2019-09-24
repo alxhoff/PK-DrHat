@@ -19,6 +19,9 @@ const test_mac_6 = [0x00,0x00,0x00,0x00,0x00,0x06]
 
 const test_macs = [test_mac_1, test_mac_2, test_mac_3, test_mac_4, test_mac_5, test_mac_6]
 
+const BEEP_PACKET_HEADER = 0x11
+const LED_PACKET_HEADER = 0x12
+
 func _ready():
 	start_client()
 	
@@ -39,7 +42,41 @@ func _process(delta):
 		last_test_packet = 0
 	else:
 		last_test_packet += delta * 1000
-	
+		
+func add_value_to_packet(num_len, num, packet):
+	var num_array = str(num)
+	var num_array_len = num_array.length()
+	if num_len > num_array_len:
+		for i in range(num_len - num_array_len):
+			num_array = "0" + num_array
+	packet.push_back(num_len)
+	for character in num_array:
+		packet.push_back(character)
+		
+	return packet
+		
+func send_beep(frequency, period):
+	if socketUDP.is_listening():
+		socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
+		var packet = PoolByteArray()
+		packet.push_back(BEEP_PACKET_HEADER)
+		
+		packet = add_value_to_packet(5, frequency, packet)
+		packet = add_value_to_packet(5, period, packet)
+			
+		socketUDP.put_packet(packet)
+
+func send_led(frequency, period):
+	if socketUDP.is_listening():
+		socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
+		var packet = PoolByteArray()
+		packet.push_back(LED_PACKET_HEADER)
+		
+		add_value_to_packet(5, frequency, packet)
+		add_value_to_packet(5, period, packet)
+		
+		socketUDP.put_packet(packet)
+		
 func start_client():
 	if (socketUDP.listen(UDP_PORT_CLIENT, UDP_ADDR_SERVER) != OK):
 		printt("Client cannot listen on port %d for server %s" % UDP_PORT_CLIENT, UDP_ADDR_SERVER)

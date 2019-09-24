@@ -27,3 +27,7 @@ func _on_Button_pressed():
 
 func set_signal(device, value):
 	signals[device].display_signal(value)
+
+func set_signal_granularity(step):
+	for progBar in signals:
+		progBar.set_granularity(step)
