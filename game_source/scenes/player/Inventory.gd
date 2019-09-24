@@ -8,6 +8,7 @@ onready var chest = $HBox/RHB/NP4/Chest
 onready var phd = $HBox/RHB/NP5/Phd
 
 func _ready():
+	$HBox/MarginContainer/AnimationPlayer.play("OpenAnim")
 	show(false, 0)
 	all_enabled(false)
 	pass

@@ -10,3 +10,7 @@ func _physics_process(delta):
 		
 func level_complete():
 	$AnimationPlayer.play("WalkOut")
+
+
+func _on_Button_pressed():
+	level_complete()
