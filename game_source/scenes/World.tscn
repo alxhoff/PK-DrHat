@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/overlays/Items.gd" type="Script" id=1]
 [ext_resource path="res://scenes/overlays/ItemsUI.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://scenes/level/levels/IntroLevel.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/backgrounds/ParallaxBackgroundGrassyHill.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/BackgrounMusic.tscn" type="PackedScene" id=7]
+[ext_resource path="res://network/server.gd" type="Script" id=8]
+[ext_resource path="res://network/client.gd" type="Script" id=9]
 
 [node name="World" type="Node"]
 
@@ -23,11 +25,19 @@ layer = 0
 [node name="CurrentLevel" parent="Level" instance=ExtResource( 5 )]
 
 [node name="AnimatedSprite" parent="Level/CurrentLevel/Player" index="0"]
-frame = 2
+frame = 3
 
 [node name="ParallaxBackgroundGrassyHill" parent="." instance=ExtResource( 6 )]
 
 [node name="BackgrounMusic" parent="." instance=ExtResource( 7 )]
+
+[node name="Network" type="Node" parent="."]
+
+[node name="UDPServer" type="Node" parent="Network"]
+script = ExtResource( 8 )
+
+[node name="UDPClient" type="Node" parent="Network"]
+script = ExtResource( 9 )
 [connection signal="UI_item_count_updated" from="Items" to="ItemsUI" method="_on_Items_UI_item_count_updated"]
 [connection signal="inventory_item_count_updated" from="Items" to="Inventory" method="_on_Items_inventory_item_count_updated"]
 [connection signal="level_completed" from="Level/CurrentLevel/Player" to="Level" method="_on_Player_level_completed"]
