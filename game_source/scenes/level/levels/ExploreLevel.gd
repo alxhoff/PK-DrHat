@@ -3,7 +3,12 @@ extends Node
 const LEVEL_NAME = "Explore"
 
 onready var signals = [
-$BtBars/VBoxContainer/SignalBar
+$HBoxContainer/BtBars/VBoxContainer/SignalBar1,
+$HBoxContainer/BtBars/VBoxContainer/SignalBar2,
+$HBoxContainer/BtBars/VBoxContainer/SignalBar3,
+$HBoxContainer/BtBars/VBoxContainer/SignalBar4,
+$HBoxContainer/BtBars/VBoxContainer/SignalBar5,
+$HBoxContainer/BtBars/VBoxContainer/SignalBar6
 ]
 
 func _ready():
@@ -21,4 +26,4 @@ func _on_Button_pressed():
 	level_complete()
 
 func set_signal(device, value):
-	signals[0].display_signal(value)
+	signals[device].display_signal(value)
