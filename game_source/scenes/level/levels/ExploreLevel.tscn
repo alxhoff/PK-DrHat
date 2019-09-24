@@ -18,7 +18,7 @@ position = Vector2( -10, 19.1426 )
 scale = Vector2( 9, 9 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 3
+frame = 6
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -84,7 +84,7 @@ region_enabled = true
 region_rect = Rect2( 188, 25, 127, 134.891 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 34.2, 298.3 )
+position = Vector2( 125.776, 300.875 )
 scale = Vector2( 3, 3 )
 z_index = 1
 texture = ExtResource( 9 )
@@ -92,7 +92,7 @@ region_enabled = true
 region_rect = Rect2( 383.453, 186.727, 33.1389, 21.2168 )
 
 [node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 127.056, 266.671 )
+position = Vector2( 33.9169, 272.765 )
 scale = Vector2( 3, 3 )
 z_index = 1
 texture = ExtResource( 9 )
