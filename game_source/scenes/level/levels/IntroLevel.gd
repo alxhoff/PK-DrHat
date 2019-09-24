@@ -48,7 +48,6 @@ func _physics_process(delta):
 					$Guide.give_item(key_sprite)
 					$Guide.delay(3)
 					$Player.increment_items()
-					print("Signal emitted")
 
 			else:
 				$Guide.stop_talking()
@@ -58,7 +57,3 @@ func _physics_process(delta):
 func level_finished():
 	level_complete = true
 	$Guide/AnimationPlayer.play("WalkOut")
-
-
-func _on_Items_UI_item_count_updated(count):
-	pass # Replace with function body.

@@ -21,7 +21,6 @@ func idle():
 	$AnimatedSprite.play("Idle")
 	
 func _on_VisibilityNotifier2D_screen_exited():
-	print("level completed signal")
 	emit_signal("level_completed")
 
 func show_inventory():

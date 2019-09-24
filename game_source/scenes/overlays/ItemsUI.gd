@@ -58,7 +58,6 @@ func display_items(count):
 
 
 func _on_Items_UI_item_count_updated(count):
-	print("Displaying update")
 	display_items(count)
 	$Timer.start()
 

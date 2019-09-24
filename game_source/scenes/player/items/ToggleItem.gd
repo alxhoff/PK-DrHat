@@ -16,7 +16,6 @@ func enable(value):
 #			$RGB.set_modulate(RGB_mod)
 			var bw = $BW
 			var rgb = $RGB
-			print("Turned solid")
 			$BW.visible = false
 			$RGB.visible = true
 #			$AnimationPlayer.play("turnSolid")
@@ -26,7 +25,6 @@ func enable(value):
 			$BW.set_modulate(BW_mod)
 			$BW.visible = true
 			$RGB.visible = false
-			print("Show BW")
 			
 
 

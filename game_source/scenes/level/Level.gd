@@ -13,7 +13,6 @@ func _ready():
 
 
 func _on_Player_level_completed():
-	print("Handling level change")
 	current_level = min(current_level, FINISHED)
 	var current_level_node = $CurrentLevel
 	remove_child(current_level_node)
@@ -41,16 +40,16 @@ func _on_Player_level_completed():
 		next_level.name = "CurrentLevel"
 		add_child(next_level)
 
-		if ic == 1:
-			next_level.init("sword", "res://sprites/items/Item__07.png")
+		if ic == 1 or ic == 0:
+			next_level.init("saucy sword", "res://sprites/items/Item__07.png")
 		elif ic == 2:
-			next_level.init("boots", "res://sprites/items/Item__50.png")
+			next_level.init("brilliant boots", "res://sprites/items/Item__50.png")
 		elif ic == 3:
-			next_level.init("gloves", "res://sprites/items/Item__60.png")
+			next_level.init("great gloves", "res://sprites/items/Item__60.png")
 		elif ic == 4:
-			next_level.init("helmet", "res://sprites/items/Item__45.png")
+			next_level.init("hot helmet", "res://sprites/items/Item__45.png")
 		elif ic == 5:
-			next_level.init("chest", "res://sprites/items/Item__59.png")
+			next_level.init("cheerful chest", "res://sprites/items/Item__59.png")
 		
 	
 	

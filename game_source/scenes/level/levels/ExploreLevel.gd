@@ -9,7 +9,7 @@ func _ready():
 func _physics_process(delta):
 	var player = $Player
 	if Input.is_action_just_pressed("ui_select"):
-		$Player.increment_items()
+#		$Player.increment_items()
 		level_complete()
 		
 func level_complete():

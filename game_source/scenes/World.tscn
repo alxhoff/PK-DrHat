@@ -23,7 +23,7 @@ layer = 0
 [node name="CurrentLevel" parent="Level" instance=ExtResource( 5 )]
 
 [node name="AnimatedSprite" parent="Level/CurrentLevel/Player" index="0"]
-frame = 5
+frame = 2
 
 [node name="ParallaxBackgroundGrassyHill" parent="." instance=ExtResource( 6 )]
 

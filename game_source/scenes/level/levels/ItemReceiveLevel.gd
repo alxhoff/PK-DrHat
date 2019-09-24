@@ -11,9 +11,10 @@ var string_index = 0
 var level_complete = false
 
 func _ready():
+	$Player.position = Vector2(-200,20)
 	connect("increment_item_count", get_tree().get_root().get_node("World").find_node("Items"), 
 	"_on_ItemCount_incremented")
-	$Guide/AnimationPlayer.play("EnterScreen")
+	$AnimationPlayer.play("WalkIn")
 
 	
 func init(item, item_sprite_path):
@@ -23,7 +24,7 @@ func init(item, item_sprite_path):
 "",
 "Hello again Philipp...", 
 "It looks like you have found...",
-"The AMAZING %s" % item_name,
+"The %s" % item_name,
 "",
 "Well done, your next riddle is", 
 "INSERT RIDDLE",
@@ -48,9 +49,9 @@ func _physics_process(delta):
 					string_index += 1
 					
 					if string_index == 5:
-						$Guide.show_item(item_sprite)
+						$Guide.give_item(item_sprite)
 						$Guide.delay(3)
-						give_item()
+						$Player.increment_items()
 					if string_index == 6:
 						$Guide.hide_item()
 				else:
@@ -59,4 +60,4 @@ func _physics_process(delta):
 				
 func level_finished():
 	level_complete = true
-	$Guide/AnimationPlayer.play("LeaveScreen")
+	$AnimationPlayer.play("WalkOut")

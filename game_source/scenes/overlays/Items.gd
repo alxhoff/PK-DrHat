@@ -20,5 +20,4 @@ func _on_ItemCount_updated(count):
 
 func _on_ItemCount_incremented():
 	item_count += 1
-	print("Incremented")
 	emit_signal("UI_item_count_updated", item_count)
