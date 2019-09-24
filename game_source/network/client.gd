@@ -10,6 +10,15 @@ var socketUDP = PacketPeerUDP.new()
 
 var last_test_packet = 0
 
+const test_mac_1 = [0x00,0x00,0x00,0x00,0x00,0x01]
+const test_mac_2 = [0x00,0x00,0x00,0x00,0x00,0x02]
+const test_mac_3 = [0x00,0x00,0x00,0x00,0x00,0x03]
+const test_mac_4 = [0x00,0x00,0x00,0x00,0x00,0x04]
+const test_mac_5 = [0x00,0x00,0x00,0x00,0x00,0x05]
+const test_mac_6 = [0x00,0x00,0x00,0x00,0x00,0x06]
+
+const test_macs = [test_mac_1, test_mac_2, test_mac_3, test_mac_4, test_mac_5, test_mac_6]
+
 func _ready():
 	start_client()
 	
@@ -18,13 +27,14 @@ func _process(delta):
 		if socketUDP.is_listening():
 			socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
 			
-			var test_packet = PoolByteArray()
-			var mac_addr = [0x12,0x23,0x34,0x45,0x56,0x67]
-			for byte in mac_addr:
-				test_packet.push_back(byte)
-	
-			test_packet.push_back(randi()%256+1)
-			socketUDP.put_packet(test_packet)
+			for test_dev in test_macs:
+				var test_packet = PoolByteArray()
+
+				for byte in test_dev:
+					test_packet.push_back(byte)
+		
+				test_packet.push_back(randi()%256+1)
+				socketUDP.put_packet(test_packet)
 		
 		last_test_packet = 0
 	else:
