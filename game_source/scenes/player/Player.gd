@@ -28,3 +28,7 @@ func show_inventory():
 	
 func increment_items():
 	emit_signal("increment_item_count")
+
+
+func _on_TextureButton_pressed():
+	show_inventory()

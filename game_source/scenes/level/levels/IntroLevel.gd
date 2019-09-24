@@ -1,6 +1,5 @@
 extends Node
 
-
 var intro_strings = [
 "Hello Philipp...", 
 "I am Amla the mistress of riddles",
@@ -48,7 +47,6 @@ func _physics_process(delta):
 					$Guide.give_item(key_sprite)
 					$Guide.delay(3)
 					$Player.increment_items()
-
 			else:
 				$Guide.stop_talking()
 				$Guide.hide_item()

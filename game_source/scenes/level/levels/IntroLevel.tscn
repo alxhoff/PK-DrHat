@@ -59,15 +59,12 @@ position = Vector2( -10, 20 )
 scale = Vector2( 7, 7 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 5
+frame = 4
 flip_h = true
 
 [node name="Guide" parent="." instance=ExtResource( 3 )]
 position = Vector2( 444.978, 126.034 )
 scale = Vector2( 5, 5 )
-
-[node name="AnimatedSprite" parent="Guide" index="0"]
-frame = 0
 
 [node name="DisplayItem" parent="Guide" index="4"]
 position = Vector2( -49, -7.167 )

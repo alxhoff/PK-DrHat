@@ -18,7 +18,7 @@ position = Vector2( -10, 19.1426 )
 scale = Vector2( 9, 9 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 6
+frame = 4
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -45,19 +45,19 @@ rect_min_size = Vector2( 200, 200 )
 margin_left = 242.0
 margin_right = 442.0
 margin_bottom = 320.0
-custom_constants/separation = 20
+custom_constants/separation = 45
 alignment = 1
 
 [node name="Signal" parent="MarginContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
 margin_left = 0.0
-margin_top = 30.0
+margin_top = 35.0
 margin_right = 200.0
-margin_bottom = 164.0
+margin_bottom = 135.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer"]
-margin_top = 184.0
+margin_top = 180.0
 margin_right = 200.0
-margin_bottom = 289.0
+margin_bottom = 285.0
 custom_constants/margin_top = 30
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer2/HBoxContainer/VBoxContainer/MarginContainer"]
@@ -114,6 +114,6 @@ z_index = 1
 texture = ExtResource( 9 )
 region_enabled = true
 region_rect = Rect2( 598.207, 54.0384, 52.106, 35.0779 )
-[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/MarginContainer/TextureButton" to="Player" method="show_inventory"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/MarginContainer/TextureButton" to="Player" method="_on_TextureButton_pressed"]
 
 [editable path="Player"]

@@ -168,7 +168,9 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Sword" parent="HBox/LHB/NP" instance=ExtResource( 4 )]
+margin_left = 1.0
 margin_top = 4.0
+margin_right = 51.0
 margin_bottom = 54.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -190,7 +192,9 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Boots" parent="HBox/LHB/NP1" instance=ExtResource( 4 )]
+margin_left = 1.0
 margin_top = 4.0
+margin_right = 51.0
 margin_bottom = 54.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -208,7 +212,9 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Gloves" parent="HBox/LHB/NP2" instance=ExtResource( 4 )]
+margin_left = 1.0
 margin_top = 4.0
+margin_right = 51.0
 margin_bottom = 54.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -253,7 +259,9 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Helmet" parent="HBox/RHB/NP3" instance=ExtResource( 4 )]
+margin_left = 1.0
 margin_top = 4.0
+margin_right = 51.0
 margin_bottom = 54.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -271,7 +279,9 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Chest" parent="HBox/RHB/NP4" instance=ExtResource( 4 )]
+margin_left = 1.0
 margin_top = 4.0
+margin_right = 51.0
 margin_bottom = 54.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -289,7 +299,9 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Phd" parent="HBox/RHB/NP5" instance=ExtResource( 4 )]
+margin_left = 1.0
 margin_top = 4.0
+margin_right = 51.0
 margin_bottom = 54.0
 size_flags_horizontal = 4
 size_flags_vertical = 4

@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/menus/StartScreen.gd" type="Script" id=1]
-[ext_resource path="res://fonts/Kenney Blocks.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://sprites/UI/Button.png" type="Texture" id=3]
-[ext_resource path="res://scenes/backgrounds/ParallaxBackgroundGrassyHill.tscn" type="PackedScene" id=4]
+[ext_resource path="res://theme/pk_theme.tres" type="Theme" id=2]
+[ext_resource path="res://fonts/Kenney Future.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://sprites/items/Item__36.png" type="Texture" id=4]
+[ext_resource path="res://scenes/backgrounds/ParallaxBackgroundGrassyHill.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/environment/tileset.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
-size = 20
-font_data = ExtResource( 2 )
+size = 40
+font_data = ExtResource( 3 )
 
 [node name="StartScreen" type="Node"]
 script = ExtResource( 1 )
@@ -25,23 +27,22 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = 460.0
 margin_bottom = 300.0
-custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 440.0
-margin_bottom = 96.0
+margin_bottom = 141.0
+theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.278431, 0.431373, 0.796078, 1 )
-text = "PK BLUETOOTH
+text = "PK'S BLUETOOTH
  ADVENTURE
 "
 align = 1
 valign = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 116.0
+margin_top = 145.0
 margin_right = 440.0
-margin_bottom = 206.0
+margin_bottom = 235.0
 
 [node name="StartButton" type="MenuButton" parent="MarginContainer/VBoxContainer/CenterContainer"]
 margin_left = 175.0
@@ -51,11 +52,20 @@ rect_min_size = Vector2( 90, 90 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="MarginContainer/VBoxContainer/CenterContainer/StartButton"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
+position = Vector2( -1.2605, -17.0167 )
+scale = Vector2( 5, 5 )
+z_index = 1
+texture = ExtResource( 4 )
 centered = false
-region_enabled = true
 region_rect = Rect2( 195.567, 972.109, 177.567, 181.083 )
 
-[node name="ParallaxBackgroundGrassyHill" parent="." instance=ExtResource( 4 )]
+[node name="ParallaxBackgroundGrassyHill" parent="." instance=ExtResource( 5 )]
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 133.236, 204.546 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 38.9416, 19.4263, 100.674, 90.8526 )
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/StartButton" to="." method="_on_StartButton_pressed"]

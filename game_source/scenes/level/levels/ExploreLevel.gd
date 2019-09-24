@@ -1,7 +1,5 @@
 extends Node
 
-signal show_inventory
-
 func _ready():
 	$Player.position = Vector2(-200,37)
 	$AnimationPlayer.play("WalkIn")
