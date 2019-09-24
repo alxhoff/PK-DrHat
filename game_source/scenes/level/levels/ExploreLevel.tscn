@@ -3,12 +3,12 @@
 [ext_resource path="res://scenes/level/levels/ExploreLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/tilesets/MagicForest.tres" type="TileSet" id=3]
-[ext_resource path="res://scenes/Signal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/player/PlayerAnimationPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/npc/chest_full_open_anim_f0.png" type="Texture" id=5]
 [ext_resource path="res://sprites/npc/chest_full_open_anim_f2.png" type="Texture" id=6]
 [ext_resource path="res://sprites/npc/chest_full_open_anim_f1.png" type="Texture" id=7]
-[ext_resource path="res://scenes/PlayerAnimationPlayer.tscn" type="PackedScene" id=8]
-[ext_resource path="res://sprites/environment/tileset.png" type="Texture" id=9]
+[ext_resource path="res://sprites/environment/tileset.png" type="Texture" id=8]
+[ext_resource path="res://scenes/overlays/SignalBar.tscn" type="PackedScene" id=9]
 
 [node name="ExploreLevel" type="Node"]
 script = ExtResource( 1 )
@@ -18,70 +18,20 @@ position = Vector2( -10, 19.1426 )
 scale = Vector2( 9, 9 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 2
+frame = 7
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-margin_right = 480.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 480, 320 )
+[node name="AnimationPlayer" parent="." instance=ExtResource( 4 )]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
-margin_right = 480.0
-margin_bottom = 320.0
-alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/HBoxContainer"]
-margin_left = 38.0
-margin_right = 238.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 200, 200 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/HBoxContainer"]
-margin_left = 242.0
-margin_right = 442.0
-margin_bottom = 320.0
-alignment = 1
-
-[node name="Signal1" parent="MarginContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_top = 5.0
-margin_bottom = 35.0
-
-[node name="Signal2" parent="MarginContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_top = 39.0
-margin_bottom = 69.0
-
-[node name="Signal3" parent="MarginContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_top = 73.0
-margin_bottom = 103.0
-
-[node name="Signal4" parent="MarginContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_top = 107.0
-margin_bottom = 137.0
-
-[node name="Signal5" parent="MarginContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_top = 141.0
-margin_bottom = 171.0
-
-[node name="Signal6" parent="MarginContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_top = 175.0
-margin_bottom = 205.0
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer"]
-margin_top = 209.0
-margin_right = 200.0
-margin_bottom = 314.0
-custom_constants/margin_top = 30
-
-[node name="TextureButton" type="TextureButton" parent="MarginContainer2/HBoxContainer/VBoxContainer/MarginContainer"]
-margin_left = 62.0
-margin_top = 30.0
-margin_right = 137.0
-margin_bottom = 105.0
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 143.828
+margin_top = 213.378
+margin_right = 218.828
+margin_bottom = 288.378
 rect_min_size = Vector2( 75, 75 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -90,13 +40,11 @@ texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
 expand = true
 
-[node name="AnimationPlayer" parent="." instance=ExtResource( 8 )]
-
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 355.3, 89.3 )
 scale = Vector2( 3, 3 )
 z_index = -1
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 188, 25, 127, 134.891 )
 
@@ -104,7 +52,7 @@ region_rect = Rect2( 188, 25, 127, 134.891 )
 position = Vector2( 125.776, 300.875 )
 scale = Vector2( 3, 3 )
 z_index = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 383.453, 186.727, 33.1389, 21.2168 )
 
@@ -112,25 +60,25 @@ region_rect = Rect2( 383.453, 186.727, 33.1389, 21.2168 )
 position = Vector2( 33.9169, 272.765 )
 scale = Vector2( 3, 3 )
 z_index = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 432.255, 163.456, 31.4051, 45.1871 )
-
-[node name="Sprite4" type="Sprite" parent="."]
-position = Vector2( 220.539, 320.707 )
-scale = Vector2( 3, 3 )
-z_index = 1
-texture = ExtResource( 9 )
-region_enabled = true
-region_rect = Rect2( 415.687, 231, 31.8569, 42 )
 
 [node name="Sprite5" type="Sprite" parent="."]
 position = Vector2( 359.433, 330.996 )
 scale = Vector2( 3, 3 )
 z_index = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 598.207, 54.0384, 52.106, 35.0779 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 220.539, 320.707 )
+scale = Vector2( 3, 3 )
+z_index = 1
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 415.687, 231, 31.8569, 42 )
 
 [node name="Button" type="Button" parent="."]
 margin_left = 41.1651
@@ -138,7 +86,57 @@ margin_top = 36.0194
 margin_right = 153.165
 margin_bottom = 56.0194
 text = "SKIP LEVEL TEST"
-[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/MarginContainer/TextureButton" to="Player" method="_on_TextureButton_pressed"]
+
+[node name="BtBars" type="MarginContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -170.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BtBars"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 160.0
+margin_bottom = 310.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+custom_constants/separation = 11
+alignment = 1
+
+[node name="SignalBar" parent="BtBars/VBoxContainer" instance=ExtResource( 9 )]
+margin_top = 50.0
+margin_bottom = 74.0
+dev_num = 1
+
+[node name="SignalBar2" parent="BtBars/VBoxContainer" instance=ExtResource( 9 )]
+margin_top = 85.0
+margin_bottom = 109.0
+dev_num = 2
+
+[node name="SignalBar3" parent="BtBars/VBoxContainer" instance=ExtResource( 9 )]
+dev_num = 3
+
+[node name="SignalBar4" parent="BtBars/VBoxContainer" instance=ExtResource( 9 )]
+margin_top = 155.0
+margin_bottom = 179.0
+dev_num = 4
+
+[node name="SignalBar5" parent="BtBars/VBoxContainer" instance=ExtResource( 9 )]
+margin_top = 190.0
+margin_bottom = 214.0
+dev_num = 5
+
+[node name="SignalBar6" parent="BtBars/VBoxContainer" instance=ExtResource( 9 )]
+margin_top = 225.0
+margin_bottom = 249.0
+dev_num = 6
+[connection signal="pressed" from="TextureButton" to="Player" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 
 [editable path="Player"]

@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/level/levels/IntroLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/player/Guide.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/PlayerAnimationPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/player/PlayerAnimationPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/tilesets/MagicForest.tres" type="TileSet" id=5]
 
 [sub_resource type="Animation" id=1]
@@ -59,6 +59,7 @@ position = Vector2( -10, 20 )
 scale = Vector2( 7, 7 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
+frame = 2
 flip_h = true
 
 [node name="Guide" parent="." instance=ExtResource( 3 )]

@@ -4,4 +4,4 @@ func _ready():
 	pass
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://scenes/World.tscn")
+	get_tree().change_scene("res://scenes/level/World.tscn")
