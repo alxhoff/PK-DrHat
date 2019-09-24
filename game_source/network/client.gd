@@ -26,7 +26,7 @@ func _ready():
 	start_client()
 	
 func _process(delta):
-	if last_test_packet > 1000:
+	if last_test_packet > 200:
 		if socketUDP.is_listening():
 			socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
 			

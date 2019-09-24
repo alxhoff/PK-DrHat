@@ -2,6 +2,10 @@ extends Node
 
 const LEVEL_NAME = "Explore"
 
+var last_update_times = [0,0,0,0,0,0]
+
+export (int) var update_period = 100
+
 onready var signals = [
 $HBoxContainer/BtBars/VBoxContainer/SignalBar1,
 $HBoxContainer/BtBars/VBoxContainer/SignalBar2,
@@ -12,8 +16,12 @@ $HBoxContainer/BtBars/VBoxContainer/SignalBar6
 ]
 
 func _ready():
+	for time in last_update_times:
+		time = OS.get_ticks_msec()
 	$Player.position = Vector2(-200,37)
 	$AnimationPlayer.play("WalkIn")
+	set_signal_granularity(1)
+	set_signal_update_period(2000)
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_select"):
@@ -26,8 +34,14 @@ func _on_Button_pressed():
 	level_complete()
 
 func set_signal(device, value):
-	signals[device].display_signal(value)
+	var cur_time = OS.get_ticks_msec()
+	if (OS.get_ticks_msec() - last_update_times[device]) > update_period:
+		signals[device].display_signal(value)
+		last_update_times[device] = OS.get_ticks_msec()
 
 func set_signal_granularity(step):
 	for progBar in signals:
 		progBar.set_granularity(step)
+		
+func set_signal_update_period(period):
+	update_period = period
