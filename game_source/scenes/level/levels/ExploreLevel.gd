@@ -16,6 +16,7 @@ $HBoxContainer/BtBars/VBoxContainer/SignalBar6
 ]
 
 func _ready():
+	hide_all_bars(true)
 	for time in last_update_times:
 		time = OS.get_ticks_msec()
 	$Player.position = Vector2(-200,37)
@@ -32,6 +33,17 @@ func level_complete():
 
 func _on_Button_pressed():
 	level_complete()
+	
+func hide_all_bars(value):
+	var bars = range(6)
+	if value:
+		set_signal_bars_visibility(bars, false)
+	else:
+		set_signal_bars_visibility(bars, true)
+
+func set_signal_bars_visibility(bars, value):
+	for bar in bars:
+		signals[bar].visible = value
 
 func set_signal(device, value):
 	var cur_time = OS.get_ticks_msec()

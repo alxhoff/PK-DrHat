@@ -10,3 +10,7 @@ func display_signal(value):
 
 func set_granularity(step):
 	$TextureProgress.step = step
+	
+func visibile(value):
+	$TextureProgress.visible  = value
+	$Label.visible = value
