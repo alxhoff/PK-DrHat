@@ -16,7 +16,7 @@ $HBoxContainer/BtBars/VBoxContainer/SignalBar6
 ]
 
 func _ready():
-	hide_all_bars(true)
+	hide_all_bars(false)
 	for time in last_update_times:
 		time = OS.get_ticks_msec()
 	$Player.position = Vector2(-200,37)
