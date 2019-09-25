@@ -30,7 +30,7 @@ func init(item, item_sprite_path):
 "",
 "Well done, your next riddle is", 
 "INSERT RIDDLE",
-"Now go forth and find the next becon", 
+"Now go forth and find the next beacon", 
 ""
 ]
 	level_ready = true

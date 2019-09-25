@@ -22,7 +22,7 @@ var intro_strings = [
 ""
 ]
 
-var string_index = 17
+var string_index = 0
 var level_complete = false
 
 var paper_sprite = preload("res://sprites/items/Item__38.png")

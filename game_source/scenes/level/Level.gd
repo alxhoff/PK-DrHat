@@ -51,8 +51,9 @@ func _on_Player_level_completed():
 			next_level.init("hot helmet", "res://sprites/items/Item__45.png")
 		elif ic == 5:
 			next_level.init("cheerful chest", "res://sprites/items/Item__59.png")
-		elif ic == 5:
+		elif ic == 6:
 			next_level.init("PhD!", "res://sprites/items/Item__36.png")
+			
 	elif current_level == FINISHED:
 		next_level_resource = load("res://scenes/level/levels/Credits.tscn")
 		current_level = CREDITS

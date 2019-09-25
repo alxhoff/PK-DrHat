@@ -25,7 +25,6 @@ func _physics_process(delta):
 				string_index += 1
 				if string_index == 4:
 					$Guide.delay(3)
-					$Player.increment_items()
 			else:
 				$Guide.stop_talking()
 				$Guide.hide_item()
