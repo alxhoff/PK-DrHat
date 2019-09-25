@@ -143,7 +143,6 @@ position = Vector2( 352.381, 189.48 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "demon"
-frame = 3
 playing = true
 flip_h = true
 
@@ -152,6 +151,7 @@ position = Vector2( 468.984, 203.198 )
 scale = Vector2( 8, 8 )
 frames = SubResource( 1 )
 animation = "imp"
+frame = 1
 playing = true
 flip_h = true
 
@@ -160,7 +160,7 @@ position = Vector2( 403.824, 208.342 )
 scale = Vector2( 6, 6 )
 frames = SubResource( 1 )
 animation = "necromancer"
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
@@ -170,7 +170,7 @@ position = Vector2( -10, 20 )
 scale = Vector2( 7, 7 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 2
+frame = 7
 flip_h = true
 
 [node name="Guide" parent="." instance=ExtResource( 40 )]
@@ -181,7 +181,7 @@ scale = Vector2( 5, 5 )
 [node name="AnimatedSprite" parent="Guide" index="0"]
 position = Vector2( -12.3462, 0 )
 animation = "Wizzard"
-frame = 1
+frame = 2
 
 [node name="SpeachBubble" parent="Guide" index="1"]
 position = Vector2( -51.2102, -40.9422 )
@@ -198,7 +198,7 @@ position = Vector2( 332.662, 210.914 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "elf"
-frame = 3
+frame = 1
 playing = true
 flip_h = true
 
@@ -207,7 +207,7 @@ position = Vector2( 383.247, 222.918 )
 scale = Vector2( 6, 6 )
 frames = SubResource( 1 )
 animation = "goblin"
-frame = 1
+frame = 2
 playing = true
 flip_h = true
 
@@ -216,7 +216,7 @@ position = Vector2( 413.255, 232.349 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "skeleton"
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
@@ -225,7 +225,6 @@ position = Vector2( 240.065, 235.778 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "wogol"
-frame = 3
 playing = true
 flip_h = true
 

@@ -1,6 +1,6 @@
 extends Node
 
-var item_count = 5
+var item_count = 0
 
 signal inventory_item_count_updated(count)
 signal UI_item_count_updated(count)

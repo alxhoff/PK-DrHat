@@ -6,6 +6,8 @@ const COLLECTION_THRESHOLD = 95
 var target_becon = 0
 var target_set = false
 
+var item_count = 0
+
 var last_update_times = [0,0,0,0,0,0]
 
 export (int) var update_period = 100
@@ -26,6 +28,39 @@ func _ready():
 		time = OS.get_ticks_msec()
 	$Player.position = Vector2(-200,37)
 	$AnimationPlayer.play("WalkIn")
+	
+func init(ic):
+	item_count = ic
+	
+	#Set up level
+	if ic == 1:
+		set_signal_bars_visibility([0], true)
+		set_signal_update_period(2000)
+		set_signal_granularity(20)
+	elif ic == 2:
+		set_signal_bars_visibility([0,1], true)
+		set_signal_update_period(500)
+		set_signal_granularity(20)
+	elif ic == 3:
+		set_signal_bars_visibility(range(6), false)
+		$SpeachBubble.say_text("Looks like a strange light is signaling", 3)
+		$HBoxContainer/BtBars/LED.visible = true
+		pass
+	elif ic == 4:
+		set_signal_bars_visibility(range(6), false)
+		$SpeachBubble.say_text("What is that sound?!?!", 3)
+		$HBoxContainer/BtBars/BUZZER.visible = true
+		pass
+	elif ic == 5:
+		set_signal_bars_visibility(range(6), false)
+		$HBoxContainer/BtBars/SERVO.visible = true
+		$SpeachBubble.say_text("Rise of the machines!", 3)
+		pass
+	elif ic == 6:
+		set_signal_bars_visibility(range(6), true)
+		set_signal_update_period(200)
+		set_signal_granularity(5)
+		pass
 	
 func check_level_completion():
 	if target_set:
@@ -56,6 +91,9 @@ func hide_all_bars(value):
 		set_signal_bars_visibility(bars, true)
 
 func set_signal_bars_visibility(bars, value):
+	$HBoxContainer/BtBars/LED.visible = false
+	$HBoxContainer/BtBars/BUZZER.visible = false
+	$HBoxContainer/BtBars/SERVO.visible = false
 	for bar in bars:
 		signals[bar].visible = value
 

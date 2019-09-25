@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/level/levels/ExploreLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -6,10 +6,12 @@
 [ext_resource path="res://scenes/player/PlayerAnimationPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/environment/tileset.png" type="Texture" id=5]
 [ext_resource path="res://scenes/overlays/SignalBar.tscn" type="PackedScene" id=6]
-[ext_resource path="res://sprites/npc/chest_full_open_anim_f0.png" type="Texture" id=7]
-[ext_resource path="res://sprites/npc/chest_full_open_anim_f2.png" type="Texture" id=8]
-[ext_resource path="res://sprites/npc/chest_full_open_anim_f1.png" type="Texture" id=9]
-[ext_resource path="res://scenes/player/SpeachBubble.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/items/Item__26.png" type="Texture" id=7]
+[ext_resource path="res://sprites/items/Item__54.png" type="Texture" id=8]
+[ext_resource path="res://sprites/npc/chest_full_open_anim_f0.png" type="Texture" id=9]
+[ext_resource path="res://sprites/npc/chest_full_open_anim_f2.png" type="Texture" id=10]
+[ext_resource path="res://sprites/npc/chest_full_open_anim_f1.png" type="Texture" id=11]
+[ext_resource path="res://scenes/player/SpeachBubble.tscn" type="PackedScene" id=12]
 
 [node name="ExploreLevel" type="Node"]
 script = ExtResource( 1 )
@@ -19,7 +21,7 @@ position = Vector2( -10, 19.1426 )
 scale = Vector2( 9, 9 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 4
+frame = 3
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -132,6 +134,27 @@ margin_top = 175.0
 margin_bottom = 199.0
 dev_num = 6
 
+[node name="LED" type="Sprite" parent="HBoxContainer/BtBars"]
+visible = false
+position = Vector2( 45, 63 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BUZZER" type="Sprite" parent="HBoxContainer/BtBars"]
+visible = false
+position = Vector2( 45, 63 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="SERVO" type="Sprite" parent="HBoxContainer/BtBars"]
+visible = false
+position = Vector2( 45, 63 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 8 )
+centered = false
+
 [node name="Button" type="Button" parent="."]
 margin_left = 41.1651
 margin_top = 36.0194
@@ -147,16 +170,16 @@ margin_bottom = 309.555
 rect_min_size = Vector2( 75, 75 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 9 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
 expand = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
-[node name="SpeachBubble" parent="." instance=ExtResource( 10 )]
+[node name="SpeachBubble" parent="." instance=ExtResource( 12 )]
 position = Vector2( 123.805, 70.8619 )
 scale = Vector2( 2, 2 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

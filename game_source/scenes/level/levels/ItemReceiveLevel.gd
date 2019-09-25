@@ -19,7 +19,7 @@ func _ready():
 	$AnimationPlayer.play("WalkIn")
 
 	
-func init(item, item_sprite_path):
+func init(item, item_sprite_path, text):
 	item_name = item
 	item_sprite = load(item_sprite_path)
 	intro_strings = [
@@ -27,12 +27,11 @@ func init(item, item_sprite_path):
 "Hello again Philipp...", 
 "It looks like you have found...",
 "The %s" % item_name,
-"",
-"Well done, your next riddle is", 
-"INSERT RIDDLE",
-"Now go forth and find the next beacon", 
 ""
 ]
+	for word in text:
+		intro_strings.push_back(word)
+	intro_strings.push_back("")
 	level_ready = true
 	
 func give_item():
