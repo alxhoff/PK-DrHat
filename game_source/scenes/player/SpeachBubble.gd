@@ -51,6 +51,7 @@ func show_text(value):
 	$SpeechBubble.visible = value
 
 func _on_WaitTimer_timeout():
+	show_text(false)
 	speaking = false
 	
 func set_pitch_high(value):

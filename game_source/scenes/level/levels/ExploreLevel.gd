@@ -20,6 +20,7 @@ $HBoxContainer/BtBars/VBoxContainer/SignalBar6
 ]
 
 func _ready():
+	$SpeachBubble.set_flip_h(true)
 	hide_all_bars(false)
 	for time in last_update_times:
 		time = OS.get_ticks_msec()
@@ -40,6 +41,7 @@ func _physics_process(delta):
 		level_complete()
 		
 func level_complete():
+	$SpeachBubble.say_text("Found it!!", 2)
 	$Timer.start()
 	$Player.jump()
 

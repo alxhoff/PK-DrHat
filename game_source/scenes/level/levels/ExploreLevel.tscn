@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/level/levels/ExploreLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://sprites/npc/chest_full_open_anim_f0.png" type="Texture" id=7]
 [ext_resource path="res://sprites/npc/chest_full_open_anim_f2.png" type="Texture" id=8]
 [ext_resource path="res://sprites/npc/chest_full_open_anim_f1.png" type="Texture" id=9]
+[ext_resource path="res://scenes/player/SpeachBubble.tscn" type="PackedScene" id=10]
 
 [node name="ExploreLevel" type="Node"]
 script = ExtResource( 1 )
@@ -18,7 +19,7 @@ position = Vector2( -10, 19.1426 )
 scale = Vector2( 9, 9 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 3
+frame = 4
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -152,8 +153,12 @@ texture_hover = ExtResource( 9 )
 expand = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
+
+[node name="SpeachBubble" parent="." instance=ExtResource( 10 )]
+position = Vector2( 123.805, 70.8619 )
+scale = Vector2( 2, 2 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="TextureButton" to="Player" method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
