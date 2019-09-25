@@ -5,24 +5,24 @@ const SEARCHING = 2
 const INFO = 3
 const OUTRO = 4
 const FINISHED = 5
+const CREDITS = 6
 
 var current_level = INTRO
 
 func _ready():
 	pass
 
-
 func _on_Player_level_completed():
-	current_level = min(current_level, FINISHED)
+	current_level = min(current_level, CREDITS)
 	var current_level_node = $CurrentLevel
 	remove_child(current_level_node)
 	current_level_node.queue_free()
 	var next_level = null
 	
 	var ic = get_parent().find_node("Items").item_count
-	
+	var next_level_resource = null
 	if current_level == INTRO or current_level == INFO:
-		var next_level_resource = null
+
 		if ic == 7:
 			next_level_resource = load("res://scenes/level/levels/FinalLevel.tscn") #TODO FINAL LEVEL
 			current_level = FINISHED
@@ -34,7 +34,6 @@ func _on_Player_level_completed():
 		add_child(next_level)
 		
 	elif current_level == SEARCHING:
-		var next_level_resource = null
 		
 		next_level_resource = load("res://scenes/level/levels/ItemReceiveLevel.tscn")
 		current_level = INFO
@@ -54,7 +53,11 @@ func _on_Player_level_completed():
 			next_level.init("cheerful chest", "res://sprites/items/Item__59.png")
 		elif ic == 5:
 			next_level.init("PhD!", "res://sprites/items/Item__36.png")
-		
+	elif current_level == FINISHED:
+		next_level_resource = load("res://scenes/level/levels/Credits.tscn")
+		current_level = CREDITS
+		next_level = next_level_resource.instance()
+		add_child(next_level)
 	next_level.name = "CurrentLevel"
 
 func _on_UDPServer_new_bt_rssi(device, strength):

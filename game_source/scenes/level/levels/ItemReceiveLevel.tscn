@@ -14,8 +14,7 @@ position = Vector2( -200, 20 )
 scale = Vector2( 7, 7 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-animation = "Idle"
-frame = 7
+frame = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 1.5, 1.5 )
@@ -31,7 +30,7 @@ z_index = -1
 
 [node name="AnimatedSprite" parent="Guide" index="0"]
 animation = "Wizzard"
-frame = 3
+frame = 0
 
 [node name="AnimationPlayer" parent="." instance=ExtResource( 5 )]
 

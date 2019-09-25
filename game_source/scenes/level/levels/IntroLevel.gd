@@ -13,7 +13,7 @@ var intro_strings = [
 "#RIDDLESSSSS", 
 "But what you really need to do", 
 "Is collect all the hidden beacons",
-"Each has its own fun open source sprite...", 
+"Each has its own fun sprite...", 
 "For example this rejected paper...",
 "",
 "At the end of it all is a shiny PhD...", 
@@ -35,7 +35,7 @@ func _physics_process(delta):
 	if $Guide.ready == true && level_complete == false:
 		if $Guide.busy() == false:
 			if string_index < intro_strings.size():
-				$Guide.say_string(intro_strings[string_index], 1)
+				$Guide.say_string(intro_strings[string_index], 0.5)
 				string_index += 1
 				if string_index == 4:
 					$Guide.morph()

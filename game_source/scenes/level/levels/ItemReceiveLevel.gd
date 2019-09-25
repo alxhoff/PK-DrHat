@@ -38,7 +38,6 @@ func init(item, item_sprite_path):
 func give_item():
 	emit_signal("increment_item_count")
 	
-	
 func _physics_process(delta):
 	if level_ready:
 		if $Guide.ready == true && level_complete == false:
@@ -47,7 +46,7 @@ func _physics_process(delta):
 					if string_index == 0:
 						$Guide.delay(4)
 						
-					$Guide.say_string(intro_strings[string_index], 1)
+					$Guide.say_string(intro_strings[string_index], 0.5)
 					string_index += 1
 					
 					if string_index == 5:
