@@ -1,0 +1,241 @@
+[gd_scene load_steps=45 format=2]
+
+[ext_resource path="res://scenes/level/levels/FinalLevel.gd" type="Script" id=1]
+[ext_resource path="res://sprites/npc/skelet_idle_anim_f0.png" type="Texture" id=2]
+[ext_resource path="res://sprites/npc/skelet_idle_anim_f1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/npc/skelet_idle_anim_f2.png" type="Texture" id=4]
+[ext_resource path="res://sprites/npc/skelet_idle_anim_f3.png" type="Texture" id=5]
+[ext_resource path="res://sprites/npc/necromancer_idle_anim_f0.png" type="Texture" id=6]
+[ext_resource path="res://sprites/npc/necromancer_idle_anim_f1.png" type="Texture" id=7]
+[ext_resource path="res://sprites/npc/necromancer_idle_anim_f2.png" type="Texture" id=8]
+[ext_resource path="res://sprites/npc/necromancer_idle_anim_f3.png" type="Texture" id=9]
+[ext_resource path="res://sprites/npc/big_zombie_idle_anim_f0.png" type="Texture" id=10]
+[ext_resource path="res://sprites/npc/big_zombie_idle_anim_f1.png" type="Texture" id=11]
+[ext_resource path="res://sprites/npc/big_zombie_idle_anim_f2.png" type="Texture" id=12]
+[ext_resource path="res://sprites/npc/big_zombie_idle_anim_f3.png" type="Texture" id=13]
+[ext_resource path="res://sprites/npc/ogre_idle_anim_f0.png" type="Texture" id=14]
+[ext_resource path="res://sprites/npc/ogre_idle_anim_f1.png" type="Texture" id=15]
+[ext_resource path="res://sprites/npc/ogre_idle_anim_f2.png" type="Texture" id=16]
+[ext_resource path="res://sprites/npc/ogre_idle_anim_f3.png" type="Texture" id=17]
+[ext_resource path="res://sprites/npc/goblin_idle_anim_f0.png" type="Texture" id=18]
+[ext_resource path="res://sprites/npc/goblin_idle_anim_f1.png" type="Texture" id=19]
+[ext_resource path="res://sprites/npc/goblin_idle_anim_f2.png" type="Texture" id=20]
+[ext_resource path="res://sprites/npc/goblin_idle_anim_f3.png" type="Texture" id=21]
+[ext_resource path="res://sprites/npc/imp_idle_anim_f0.png" type="Texture" id=22]
+[ext_resource path="res://sprites/npc/imp_idle_anim_f1.png" type="Texture" id=23]
+[ext_resource path="res://sprites/npc/imp_idle_anim_f2.png" type="Texture" id=24]
+[ext_resource path="res://sprites/npc/imp_idle_anim_f3.png" type="Texture" id=25]
+[ext_resource path="res://sprites/npc/elf_f_hit_anim_f0.png" type="Texture" id=26]
+[ext_resource path="res://sprites/npc/elf_f_idle_anim_f0.png" type="Texture" id=27]
+[ext_resource path="res://sprites/npc/elf_f_idle_anim_f1.png" type="Texture" id=28]
+[ext_resource path="res://sprites/npc/elf_f_idle_anim_f2.png" type="Texture" id=29]
+[ext_resource path="res://sprites/npc/elf_f_idle_anim_f3.png" type="Texture" id=30]
+[ext_resource path="res://sprites/npc/big_demon_idle_anim_f0.png" type="Texture" id=31]
+[ext_resource path="res://sprites/npc/big_demon_idle_anim_f1.png" type="Texture" id=32]
+[ext_resource path="res://sprites/npc/big_demon_idle_anim_f2.png" type="Texture" id=33]
+[ext_resource path="res://sprites/npc/big_demon_idle_anim_f3.png" type="Texture" id=34]
+[ext_resource path="res://sprites/npc/wogol_idle_anim_f0.png" type="Texture" id=35]
+[ext_resource path="res://sprites/npc/wogol_idle_anim_f1.png" type="Texture" id=36]
+[ext_resource path="res://sprites/npc/wogol_idle_anim_f2.png" type="Texture" id=37]
+[ext_resource path="res://sprites/npc/wogol_idle_anim_f3.png" type="Texture" id=38]
+[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=39]
+[ext_resource path="res://scenes/player/Guide.tscn" type="PackedScene" id=40]
+[ext_resource path="res://scenes/player/PlayerAnimationPlayer.tscn" type="PackedScene" id=41]
+[ext_resource path="res://scenes/tilesets/MagicForest.tres" type="TileSet" id=42]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "skeleton",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "necromancer",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "zombie",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "ogre",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "goblin",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "imp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "elf",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "demon",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
+"loop": true,
+"name": "wogol",
+"speed": 12.0
+} ]
+
+[sub_resource type="Animation" id=1]
+resource_name = "WalkOut"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.8, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10, 20 ), Vector2( -200, 20 ), Vector2( -400, 20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Player/AnimatedSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../Player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "run"
+}, {
+"args": [  ],
+"method": "idle"
+} ]
+}
+
+[node name="FinalLevel" type="Node"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 352.381, 189.48 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 2 )
+animation = "demon"
+frame = 2
+playing = true
+flip_h = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="."]
+position = Vector2( 468.984, 203.198 )
+scale = Vector2( 8, 8 )
+frames = SubResource( 2 )
+animation = "imp"
+playing = true
+flip_h = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="."]
+position = Vector2( 403.824, 208.342 )
+scale = Vector2( 6, 6 )
+frames = SubResource( 2 )
+animation = "necromancer"
+frame = 2
+playing = true
+flip_h = true
+
+[node name="Player" parent="." instance=ExtResource( 39 )]
+editor/display_folded = true
+position = Vector2( -10, 20 )
+scale = Vector2( 7, 7 )
+
+[node name="AnimatedSprite" parent="Player" index="0"]
+frame = 2
+flip_h = true
+
+[node name="Guide" parent="." instance=ExtResource( 40 )]
+editor/display_folded = true
+position = Vector2( 348.095, 198.054 )
+scale = Vector2( 5, 5 )
+
+[node name="AnimatedSprite" parent="Guide" index="0"]
+position = Vector2( -12.3462, 0 )
+animation = "Wizzard"
+frame = 3
+
+[node name="SpeachBubble" parent="Guide" index="1"]
+position = Vector2( -51.2102, -40.9422 )
+
+[node name="DisplayItem" parent="Guide" index="4"]
+position = Vector2( -49, -7.167 )
+rotation = -0.159513
+
+[node name="AnimationPlayer" parent="Guide" instance=ExtResource( 41 )]
+anims/WalkOut = SubResource( 1 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 332.662, 210.914 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 2 )
+animation = "elf"
+frame = 2
+playing = true
+flip_h = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
+position = Vector2( 383.247, 222.918 )
+scale = Vector2( 6, 6 )
+frames = SubResource( 2 )
+animation = "goblin"
+playing = true
+flip_h = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="."]
+position = Vector2( 413.255, 232.349 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 2 )
+animation = "skeleton"
+frame = 2
+playing = true
+flip_h = true
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 1.5, 1.5 )
+tile_set = ExtResource( 42 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 589823, 0, 0, 589828, 5, 0, 720905, 3, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0 )
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="."]
+position = Vector2( 240.065, 235.778 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 2 )
+animation = "wogol"
+frame = 2
+playing = true
+flip_h = true
+
+[editable path="Player"]
+
+[editable path="Guide"]
