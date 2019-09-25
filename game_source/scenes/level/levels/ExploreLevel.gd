@@ -1,6 +1,10 @@
 extends Node
 
 const LEVEL_NAME = "Explore"
+const COLLECTION_THRESHOLD = 95
+
+var target_becon = 0
+var target_set = false
 
 var last_update_times = [0,0,0,0,0,0]
 
@@ -21,15 +25,23 @@ func _ready():
 		time = OS.get_ticks_msec()
 	$Player.position = Vector2(-200,37)
 	$AnimationPlayer.play("WalkIn")
-	set_signal_granularity(1)
-	set_signal_update_period(2000)
+	
+func check_level_completion():
+	if target_set:
+		if signals[target_becon].value > COLLECTION_THRESHOLD:
+			level_complete()
+	
+func set_target_becond(dev_num):
+	target_becon = dev_num
+	target_set = true
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_select"):
 		level_complete()
 		
 func level_complete():
-	$AnimationPlayer.play("WalkOut")
+	$Timer.start()
+	$Player.jump()
 
 func _on_Button_pressed():
 	level_complete()
@@ -57,3 +69,6 @@ func set_signal_granularity(step):
 		
 func set_signal_update_period(period):
 	update_period = period
+
+func _on_Timer_timeout():
+	$AnimationPlayer.play("WalkOut")

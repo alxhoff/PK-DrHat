@@ -1,21 +1,36 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/player/SpeachBubble.gd" type="Script" id=1]
-[ext_resource path="res://theme/pk_theme.tres" type="Theme" id=2]
-[ext_resource path="res://audio/effects/low_beep.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/effects/low_beep.wav" type="AudioStream" id=2]
+[ext_resource path="res://sprites/speech_bubble_flip.png" type="Texture" id=3]
+[ext_resource path="res://theme/pk_theme.tres" type="Theme" id=4]
 
 [node name="SpeachBubble" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color( 1, 1, 1, 0.392157 )
+margin_right = 89.0
+margin_bottom = 42.0
+texture = ExtResource( 3 )
+
 [node name="SpeechBubble" type="Label" parent="."]
-margin_right = 56.0
-margin_bottom = 41.0
-theme = ExtResource( 2 )
+margin_left = 11.2252
+margin_top = 2.40872
+margin_right = 76.2252
+margin_bottom = 32.4087
+grow_vertical = 2
+rect_min_size = Vector2( 65, 30 )
+theme = ExtResource( 4 )
 text = "Hello this is my test
 speech bubble"
 align = 1
+valign = 1
 autowrap = true
-percent_visible = 0.0
+percent_visible = -0.0344828
 
 [node name="Timer" type="Timer" parent="SpeechBubble"]
 wait_time = 0.1
@@ -23,8 +38,5 @@ autostart = true
 
 [node name="WaitTimer" type="Timer" parent="SpeechBubble"]
 one_shot = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
 [connection signal="timeout" from="SpeechBubble/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="SpeechBubble/WaitTimer" to="." method="_on_WaitTimer_timeout"]

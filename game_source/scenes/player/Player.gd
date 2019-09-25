@@ -13,6 +13,8 @@ func _ready():
 	"_on_ItemCount_incremented")
 	$AnimatedSprite.play("Idle")
 
+func jump():
+	$AnimatedSprite.play("Jump")
 
 func run():
 	$AnimatedSprite.play("RunBadge")

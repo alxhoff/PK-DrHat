@@ -3,6 +3,7 @@ extends Node
 var ready = true
 
 func _ready():
+	$SpeachBubble.set_flip_h(false)
 	hide_item()
 	pass
 
