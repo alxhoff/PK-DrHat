@@ -37,6 +37,15 @@ var level_six_text = [
 
 func _ready():
 	pass
+	
+var explore_text = [
+"Seems like my signal has a poor resolution",
+"Looks like the duty cycle is improving",
+"Looks like a strange light is signaling",
+"What is that sound?!?!",
+"Rise of the machines!",
+"All systems go!"
+]
 
 func _on_Player_level_completed():
 	current_level = min(current_level, CREDITS)
@@ -56,10 +65,11 @@ func _on_Player_level_completed():
 		else:
 			next_level_resource = load("res://scenes/level/levels/ExploreLevel.tscn")
 			next_level = next_level_resource.instance()
+
 			if ic == 0:
-				next_level.init(1)  #Testing
+				next_level.init(1, "Testing")  #Testing
 			else:
-				next_level.init(ic)
+				next_level.init(ic, explore_text[ic-1])
 			current_level = SEARCHING
 		
 

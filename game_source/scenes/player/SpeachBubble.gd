@@ -28,6 +28,7 @@ func _on_Timer_timeout():
 		$SpeechBubble.visible_characters += 1
 
 func say_text(text, final_delay):
+	var ninep = $NinePatchRect
 	if text != "":
 		visible = true
 	else:

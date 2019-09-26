@@ -18,10 +18,10 @@ margin_bottom = 42.0
 texture = ExtResource( 3 )
 
 [node name="SpeechBubble" type="Label" parent="."]
-margin_left = 11.2252
-margin_top = 2.40872
-margin_right = 76.2252
-margin_bottom = 32.4087
+margin_left = 13.1623
+margin_top = 2.60242
+margin_right = 78.1623
+margin_bottom = 32.6024
 grow_vertical = 2
 rect_min_size = Vector2( 65, 30 )
 theme = ExtResource( 4 )
@@ -30,7 +30,6 @@ speech bubble"
 align = 1
 valign = 1
 autowrap = true
-percent_visible = -0.0344828
 
 [node name="Timer" type="Timer" parent="SpeechBubble"]
 wait_time = 0.1
