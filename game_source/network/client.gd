@@ -68,12 +68,13 @@ func send_servo(value):  # Value between 0-100 to be displayed by the servo. Log
 			
 		socketUDP.put_packet(packet)
 		
-func send_beep(period):  #period between fixed frequency beeps
+func send_beep(frequency, period):  #period between fixed frequency beeps
 	if socketUDP.is_listening():
 		socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
 		var packet = PoolByteArray()
 		packet.push_back(BEEP_PACKET_HEADER)
 		
+		packet = add_value_to_packet(5, frequency, packet)
 		packet = add_value_to_packet(5, period, packet)
 			
 		socketUDP.put_packet(packet)

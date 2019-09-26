@@ -14,7 +14,7 @@ var signals = []
 var last_update_times = [0,0,0,0,0,0]
 
 signal update_led(frequency, period)
-signal update_buzzer(period)
+signal update_buzzer(frequency, period)
 signal update_servo(value)
 
 func _ready():
@@ -99,7 +99,7 @@ func _physics_process(delta):
 		pass
 	elif item_count == 4: #BUZZER
 		var buzzer_vals = get_buzzer_values(signals[item_count])
-		emit_signal("update_buzzer", buzzer_vals)
+		emit_signal("update_buzzer", buzzer_vals[0], buzzer_vals[1])
 		pass
 	elif item_count == 5: #SERVO
 		var servo_vals = get_servo_values(signals[item_count])
@@ -110,7 +110,7 @@ func get_led_values(value):
 	return [0, 1]
 		
 func get_buzzer_values(value):
-	return 20
+	return [20,30]
 	
 func get_servo_values(value):
 	return 10
