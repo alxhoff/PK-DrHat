@@ -60,7 +60,7 @@ position = Vector2( -10, 20 )
 scale = Vector2( 7, 7 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 4
+frame = 5
 flip_h = true
 
 [node name="Guide" parent="." instance=ExtResource( 3 )]
@@ -69,7 +69,7 @@ scale = Vector2( 5, 5 )
 
 [node name="AnimatedSprite" parent="Guide" index="0"]
 position = Vector2( -4.80132, 2.22918 )
-frame = 1
+frame = 2
 
 [node name="SpeachBubble" parent="Guide" index="1"]
 position = Vector2( -71.6158, -25.6809 )
@@ -92,6 +92,7 @@ tile_data = PoolIntArray( 589823, 0, 0, 524302, 3, 0, 524305, 4, 0, 524306, 4, 0
 position = Vector2( 458.696, 145.754 )
 scale = Vector2( 5, 5 )
 animation = "necromancer"
+frame = 2
 
 [editable path="Player"]
 

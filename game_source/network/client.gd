@@ -19,6 +19,7 @@ const test_mac_6 = [0x00,0x00,0x00,0x00,0x00,0x06]
 
 const test_macs = [test_mac_1, test_mac_2, test_mac_3, test_mac_4, test_mac_5, test_mac_6]
 
+const RSSI_PACKET_HEADER = 0x10
 const BEEP_PACKET_HEADER = 0x11
 const LED_PACKET_HEADER = 0x12
 
@@ -32,6 +33,7 @@ func _process(delta):
 			
 			for test_dev in test_macs:
 				var test_packet = PoolByteArray()
+				test_packet.push_back(RSSI_PACKET_HEADER)
 
 				for byte in test_dev:
 					test_packet.push_back(byte)
