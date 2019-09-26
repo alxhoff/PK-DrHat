@@ -80,6 +80,7 @@ func _physics_process(delta):
 		level_complete()
 		
 func level_complete():
+	$AudioEffects.play()
 	$SpeachBubble.say_text("Found it!!", 2)
 	$Timer.start()
 	$Player.jump()
