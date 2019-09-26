@@ -15,6 +15,9 @@ export (int) var update_period = 100
 var signals = [] 
 
 func _ready():
+	$HBoxContainer/BtBars/BUZZER/AnimationPlayer.play("grow")
+	$HBoxContainer/BtBars/LED/AnimationPlayer.play("Flash")
+	$HBoxContainer/BtBars/SERVO/AnimationPlayer.play("swing")
 	$SpeachBubble.set_flip_h(true)
 	for time in last_update_times:
 		time = OS.get_ticks_msec()

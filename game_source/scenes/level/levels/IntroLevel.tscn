@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/level/levels/IntroLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/player/Guide.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/player/PlayerAnimationPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/tilesets/MagicForest.tres" type="TileSet" id=5]
+[ext_resource path="res://scenes/player/AnimatedNPC.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "WalkOut"
@@ -59,17 +60,19 @@ position = Vector2( -10, 20 )
 scale = Vector2( 7, 7 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
+frame = 4
 flip_h = true
 
 [node name="Guide" parent="." instance=ExtResource( 3 )]
-position = Vector2( 444.978, 126.034 )
+position = Vector2( 425.258, 116.603 )
 scale = Vector2( 5, 5 )
 
 [node name="AnimatedSprite" parent="Guide" index="0"]
-frame = 0
+position = Vector2( -4.80132, 2.22918 )
+frame = 1
 
 [node name="SpeachBubble" parent="Guide" index="1"]
-position = Vector2( -71.4443, -26.7098 )
+position = Vector2( -71.6158, -25.6809 )
 
 [node name="DisplayItem" parent="Guide" index="4"]
 position = Vector2( -49, -7.167 )
@@ -84,6 +87,11 @@ tile_set = ExtResource( 5 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 589823, 0, 0, 524302, 3, 0, 524305, 4, 0, 524306, 4, 0, 524307, 4, 0, 524308, 4, 0, 589828, 5, 0 )
+
+[node name="AnimatedSprite2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 458.696, 145.754 )
+scale = Vector2( 5, 5 )
+animation = "necromancer"
 
 [editable path="Player"]
 

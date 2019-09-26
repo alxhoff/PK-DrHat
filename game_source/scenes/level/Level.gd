@@ -10,29 +10,45 @@ const CREDITS = 6
 var current_level = INTRO
 
 var level_one_text = [
-"this is the first level",
-"and this is some random text"
+"I hide things",
+"that you do not wish to keep.",
+"To become a doctor",
+"you have to dig deep"
 ]
 
 var level_two_text = [
-"this is now the second level",
-"and some more text"
+"Good ideas are hanging around,",
+"indeed.",
+"You have to think outside of the box",
+"to proceed"
 ]
 
 var level_three_text = [
-""
+"I am a treasure that you have found",
+"today, I hide something that you need",
+"to get crowned"
 ]
 
 var level_four_text = [
-""
+"I have been exclusive to RCS members",
+"with degrees.",
+"come to me to share the same",
+"ancestry"
 ]
 
 var level_five_text = [
-""
+"you use me to share your knowledge",
+"you find me and your doctorhood,",
+"I acknowledge"
 ]
 
 var level_six_text = [
-""
+"...",
+"No wait silly me",
+"we didn't have time for more",
+"you've found them all!",
+"...",
+"the end?"
 ]
 
 func _ready():

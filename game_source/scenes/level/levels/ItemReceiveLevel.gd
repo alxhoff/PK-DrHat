@@ -27,6 +27,8 @@ func init(item, item_sprite_path, text):
 "Hello again Philipp...", 
 "It looks like you have found...",
 "The %s" % item_name,
+"",
+"Now for the next riddle",
 ""
 ]
 	for word in text:

@@ -70,6 +70,9 @@ script = ExtResource( 1 )
 position = Vector2( -10, 20 )
 scale = Vector2( 9, 9 )
 
+[node name="AnimatedSprite" parent="Player" index="0"]
+frame = 4
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
@@ -183,7 +186,7 @@ dev_num = 6
 
 [node name="LED" type="Sprite" parent="HBoxContainer/BtBars"]
 visible = false
-modulate = Color( 0.922967, 0.957429, 0.515505, 0.753729 )
+modulate = Color( 0.876204, 0.931586, 0.221388, 0.913709 )
 position = Vector2( 45, 63 )
 scale = Vector2( 5, 5 )
 z_index = 1
@@ -198,7 +201,7 @@ anims/Flash = SubResource( 1 )
 
 [node name="BUZZER" type="Sprite" parent="HBoxContainer/BtBars"]
 position = Vector2( 84.0961, 89.0642 )
-scale = Vector2( 0.414086, 0.414086 )
+scale = Vector2( 0.431803, 0.431803 )
 texture = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/BtBars/BUZZER"]
@@ -207,7 +210,7 @@ anims/grow = SubResource( 3 )
 [node name="SERVO" type="Sprite" parent="HBoxContainer/BtBars"]
 visible = false
 position = Vector2( 83.2817, 95.5802 )
-rotation = -0.0121179
+rotation = 0.325687
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 9 )
 __meta__ = {
