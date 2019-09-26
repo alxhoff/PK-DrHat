@@ -22,6 +22,7 @@ const test_macs = [test_mac_1, test_mac_2, test_mac_3, test_mac_4, test_mac_5, t
 const RSSI_PACKET_HEADER = 0x10
 const BEEP_PACKET_HEADER = 0x11
 const LED_PACKET_HEADER = 0x12
+const SERVO_PACKET_HEADER = 0x13
 
 func _ready():
 	start_client()
@@ -56,14 +57,23 @@ func add_value_to_packet(num_len, num, packet):
 		packet.push_back(character)
 		
 	return packet
+
+func send_servo(value):  # Value between 0-100 to be displayed by the servo. Logic to be handled on the Pi
+	if socketUDP.is_listening():
+		socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
+		var packet = PoolByteArray()
+		packet.push_back(SERVO_PACKET_HEADER)
 		
-func send_beep(frequency, period):
+		packet = add_value_to_packet(3, value, packet)
+			
+		socketUDP.put_packet(packet)
+		
+func send_beep(period):  #period between fixed frequency beeps
 	if socketUDP.is_listening():
 		socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
 		var packet = PoolByteArray()
 		packet.push_back(BEEP_PACKET_HEADER)
 		
-		packet = add_value_to_packet(5, frequency, packet)
 		packet = add_value_to_packet(5, period, packet)
 			
 		socketUDP.put_packet(packet)

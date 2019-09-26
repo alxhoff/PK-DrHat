@@ -60,7 +60,7 @@ position = Vector2( -10, 20 )
 scale = Vector2( 7, 7 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 5
+frame = 1
 flip_h = true
 
 [node name="Guide" parent="." instance=ExtResource( 3 )]
