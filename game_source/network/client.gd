@@ -48,6 +48,7 @@ func _ready():
 #	pass
 		
 func add_value_to_packet(num_len, num, packet):
+	num = 55
 	var num_array = str(num)
 	var num_array_len = num_array.length()
 	if num_len > num_array_len:
@@ -66,7 +67,6 @@ func send_servo(value):  # Value between 0-100 to be displayed by the servo. Log
 		var packet = PoolByteArray()
 		packet.push_back(SERVO_PACKET_HEADER)
 		
-		value = 55
 		packet = add_value_to_packet(3, value, packet)
 			
 		socketUDP.put_packet(packet)
