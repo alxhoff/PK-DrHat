@@ -55,17 +55,19 @@ func add_value_to_packet(num_len, num, packet):
 			num_array = "0" + num_array
 	packet.push_back(num_len)
 	for character in num_array:
-		packet.push_back(character)
+		packet.push_back(int(character))
 		
 	return packet
 
+# Values sent as binary coded decimals
 func send_servo(value):  # Value between 0-100 to be displayed by the servo. Logic to be handled on the Pi
 	if socketUDP.is_listening():
 		socketUDP.set_dest_address(UDP_ADDR_CLIENT, UDP_PORT_CLIENT)
 		var packet = PoolByteArray()
 		packet.push_back(SERVO_PACKET_HEADER)
 		
-		packet = add_value_to_packet(1, value, packet)
+		value = 55
+		packet = add_value_to_packet(3, value, packet)
 			
 		socketUDP.put_packet(packet)
 		

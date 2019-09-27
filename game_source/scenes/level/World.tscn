@@ -28,10 +28,7 @@ layer = -1
 [node name="CurrentLevel" parent="Level" instance=ExtResource( 6 )]
 
 [node name="AnimatedSprite" parent="Level/CurrentLevel/Player" index="0"]
-frame = 0
-
-[node name="AnimatedSprite2" parent="Level/CurrentLevel" index="3"]
-frame = 0
+frame = 6
 
 [node name="BackgrounMusic" parent="." instance=ExtResource( 7 )]
 volume_db = -3.0
