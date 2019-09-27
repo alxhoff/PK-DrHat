@@ -65,7 +65,7 @@ func send_servo(value):  # Value between 0-100 to be displayed by the servo. Log
 		var packet = PoolByteArray()
 		packet.push_back(SERVO_PACKET_HEADER)
 		
-		packet = add_value_to_packet(3, value, packet)
+		packet = add_value_to_packet(1, value, packet)
 			
 		socketUDP.put_packet(packet)
 		
