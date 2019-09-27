@@ -1,12 +1,13 @@
 extends Node
 
 const LEVEL_NAME = "Explore"
-const COLLECTION_THRESHOLD = 95
+const COLLECTION_THRESHOLD = 65
 
 export (int) var update_period = 100
 
 var target_becon = 0
 var target_set = false
+var level_completed = false
 
 var item_count = 0
 var speech_text = ""
@@ -42,7 +43,8 @@ func speak():
 	$SpeachBubble.say_text(speech_text, 3)
 
 func init(ic, speech):
-	set_target_becond(ic)
+	level_completed = false
+	set_target_becond(ic-1)
 	speech_text = speech
 	item_count = ic
 	signals = [
@@ -85,7 +87,9 @@ $HBoxContainer/BtBars/VBoxContainer/SB6
 	
 func check_level_completion():
 	if target_set:
-		if signals[target_becon].get_value() > COLLECTION_THRESHOLD:
+		var value = signals[target_becon].get_value()
+		print(value)
+		if value > COLLECTION_THRESHOLD and level_completed == false:
 			level_complete()
 	
 func set_target_becond(dev_num):
@@ -127,6 +131,7 @@ func get_servo_values(value):
 	return 10
 
 func level_complete():
+	level_completed = true
 	$AudioEffects.play()
 	$SpeachBubble.say_text("Found it!!", 2)
 	$Timer.start()
