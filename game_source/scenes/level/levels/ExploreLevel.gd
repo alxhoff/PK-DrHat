@@ -14,7 +14,7 @@ var signals = []
 var last_update_times = [0,0,0,0,0,0]
 
 signal update_led(frequency, period)
-signal update_buzzer(period)
+signal update_buzzer(frequency, period)
 signal update_servo(value)
 
 func _ready():
@@ -42,6 +42,7 @@ func speak():
 	$SpeachBubble.say_text(speech_text, 3)
 
 func init(ic, speech):
+	set_target_becond(ic)
 	speech_text = speech
 	item_count = ic
 	signals = [
@@ -56,8 +57,10 @@ $HBoxContainer/BtBars/VBoxContainer/SB6
 	#Set up level
 	if ic == 1:
 		set_signal_bars_visibility([0])
-		set_signal_update_period(2000)
-		set_signal_granularity(20)
+#		set_signal_update_period(2000)
+#		set_signal_granularity(20)
+		set_signal_update_period(100)
+		set_signal_granularity(10)
 	elif ic == 2:
 		set_signal_bars_visibility([0,1])
 		set_signal_update_period(500)
@@ -82,35 +85,43 @@ $HBoxContainer/BtBars/VBoxContainer/SB6
 	
 func check_level_completion():
 	if target_set:
-		if signals[target_becon].value > COLLECTION_THRESHOLD:
+		if signals[target_becon].get_value() > COLLECTION_THRESHOLD:
 			level_complete()
 	
 func set_target_becond(dev_num):
 	target_becon = dev_num
 	target_set = true
 
+var frame_count = 0
+
 func _physics_process(delta):
+	if frame_count == 59:
+		frame_count = 0
+		
+		if item_count == 3: #LED
+			var led_vals = get_led_values(signals[item_count])
+			emit_signal("update_led", led_vals[0], led_vals[1])
+			pass
+		elif item_count == 4: #BUZZER
+			var buzzer_vals = get_buzzer_values(signals[item_count])
+			emit_signal("update_buzzer", buzzer_vals[0], buzzer_vals[1])
+			pass
+		elif item_count == 5: #SERVO
+			var servo_vals = get_servo_values(signals[item_count])
+			emit_signal("update_servo", servo_vals)
+			pass
+	else:
+		frame_count += 1
+		
 	if item_count == 1 or item_count == 2 or item_count == 6:
-		# Signals being displayed on screen
-		pass
-	elif item_count == 3: #LED
-		var led_vals = get_led_values(signals[item_count])
-		emit_signal("update_led", led_vals[0], led_vals[1])
-		pass
-	elif item_count == 4: #BUZZER
-		var buzzer_vals = get_buzzer_values(signals[item_count])
-		emit_signal("update_buzzer", buzzer_vals)
-		pass
-	elif item_count == 5: #SERVO
-		var servo_vals = get_servo_values(signals[item_count])
-		emit_signal("update_servo", servo_vals)
-		pass
+		check_level_completion()
+	
 		
 func get_led_values(value):
 	return [0, 1]
 		
 func get_buzzer_values(value):
-	return 20
+	return [20,30]
 	
 func get_servo_values(value):
 	return 10

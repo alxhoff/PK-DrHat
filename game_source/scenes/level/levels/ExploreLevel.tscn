@@ -67,11 +67,11 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -10, 20 )
+position = Vector2( -200, 20 )
 scale = Vector2( 9, 9 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 4
+frame = 3
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
