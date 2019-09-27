@@ -44,7 +44,10 @@ func speak():
 
 func init(ic, speech):
 	level_completed = false
-	set_target_becond(ic-1)
+	if ic == 0:
+		set_target_becond(0)
+	else:
+		set_target_becond(ic-1)
 	speech_text = speech
 	item_count = ic
 	signals = [
@@ -57,10 +60,8 @@ $HBoxContainer/BtBars/VBoxContainer/SB6
 ]
 
 	#Set up level
-	if ic == 1:
+	if ic == 1 or ic == 0:
 		set_signal_bars_visibility([0])
-#		set_signal_update_period(2000)
-#		set_signal_granularity(20)
 		set_signal_update_period(100)
 		set_signal_granularity(10)
 	elif ic == 2:
@@ -88,7 +89,6 @@ $HBoxContainer/BtBars/VBoxContainer/SB6
 func check_level_completion():
 	if target_set:
 		var value = signals[target_becon].get_value()
-		print(value)
 		if value > COLLECTION_THRESHOLD and level_completed == false:
 			level_complete()
 	
@@ -102,16 +102,24 @@ func _physics_process(delta):
 	if frame_count == 59:
 		frame_count = 0
 		
-		if item_count == 3: #LED
-			var led_vals = get_led_values(signals[item_count])
+		if item_count == 0: #TESTING
+			print("sending all signals")
+			var led_vals = get_led_values(signals[item_count].get_value())
+			emit_signal("update_led", led_vals[0], led_vals[1])
+			var buzzer_vals = get_buzzer_values(signals[item_count].get_value())
+			emit_signal("update_buzzer", buzzer_vals[0], buzzer_vals[1])
+			var servo_vals = get_servo_values(signals[item_count].get_value())
+			emit_signal("update_servo", servo_vals)
+		elif item_count == 3:
+			var led_vals = get_led_values(signals[item_count].get_value())
 			emit_signal("update_led", led_vals[0], led_vals[1])
 			pass
 		elif item_count == 4: #BUZZER
-			var buzzer_vals = get_buzzer_values(signals[item_count])
+			var buzzer_vals = get_buzzer_values(signals[item_count].get_value())
 			emit_signal("update_buzzer", buzzer_vals[0], buzzer_vals[1])
 			pass
 		elif item_count == 5: #SERVO
-			var servo_vals = get_servo_values(signals[item_count])
+			var servo_vals = get_servo_values(signals[item_count].get_value())
 			emit_signal("update_servo", servo_vals)
 			pass
 	else:
@@ -120,15 +128,21 @@ func _physics_process(delta):
 	if item_count == 1 or item_count == 2 or item_count == 6:
 		check_level_completion()
 	
-		
+#0% signal = 1000 second DS and freq of 0.25Hz
+#100% signal = 250ms DS and a freq of 10Hz
+# freq = sig/10
+# DS = (13.25 - freq) / 0.013
+
 func get_led_values(value):
-	return [0, 1]
-		
+	var freq = value/10
+	var duty_cycle = (13.25 - freq) / 0.013
+	return [duty_cycle, freq]
+
 func get_buzzer_values(value):
-	return [20,30]
+	return get_led_values(value)
 	
 func get_servo_values(value):
-	return 10
+	return value
 
 func level_complete():
 	level_completed = true

@@ -81,7 +81,6 @@ func send_beep(frequency, period):  #period between fixed frequency beeps
 		socketUDP.put_packet(packet)
 
 func send_led(frequency, period):
-	print("Sending led")
 	if socketUDP.is_listening():
 		socketUDP.set_dest_address(UDP_ADDR_CLIENT, UDP_PORT_CLIENT)
 		var packet = PoolByteArray()

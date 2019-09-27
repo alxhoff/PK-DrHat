@@ -83,7 +83,7 @@ func _on_Player_level_completed():
 			next_level = next_level_resource.instance()
 
 			if ic == 0:
-				next_level.init(1, "Testing")  #Testing
+				next_level.init(ic, "Testing")  #Testing
 			else:
 				next_level.init(ic, explore_text[ic-1])
 			current_level = SEARCHING
