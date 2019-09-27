@@ -1,10 +1,10 @@
 extends Node
 
 export (int) var UDP_PORT_SERVER = 1234
-export (String) var UDP_ADDR_SERVER = "127.0.0.1"
+export (String) var UDP_ADDR_SERVER = "129.187.151.95"
 
 export (int) var UDP_PORT_CLIENT = 1235
-export (String) var UDP_ADDR_CLIENT = "127.0.0.1"
+export (String) var UDP_ADDR_CLIENT = "129.187.151.129"
 
 var socketUDP = PacketPeerUDP.new()
 
@@ -27,24 +27,25 @@ const SERVO_PACKET_HEADER = 0x13
 func _ready():
 	start_client()
 	
-func _process(delta):
-	if last_test_packet > 200:
-		if socketUDP.is_listening():
-			socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
-			
-			for test_dev in test_macs:
-				var test_packet = PoolByteArray()
-				test_packet.push_back(RSSI_PACKET_HEADER)
-
-				for byte in test_dev:
-					test_packet.push_back(byte)
-		
-				test_packet.push_back(randi()%256+1)
-				socketUDP.put_packet(test_packet)
-		
-		last_test_packet = 0
-	else:
-		last_test_packet += delta * 1000
+#func _process(delta):
+#	if last_test_packet > 200:
+#		if socketUDP.is_listening():
+#			socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
+#
+#			for test_dev in test_macs:
+#				var test_packet = PoolByteArray()
+#				test_packet.push_back(RSSI_PACKET_HEADER)
+#
+#				for byte in test_dev:
+#					test_packet.push_back(byte)
+#
+#				test_packet.push_back(randi()%256+1)
+#				socketUDP.put_packet(test_packet)
+#
+#		last_test_packet = 0
+#	else:
+#		last_test_packet += delta * 1000
+#	pass
 		
 func add_value_to_packet(num_len, num, packet):
 	var num_array = str(num)
@@ -60,7 +61,7 @@ func add_value_to_packet(num_len, num, packet):
 
 func send_servo(value):  # Value between 0-100 to be displayed by the servo. Logic to be handled on the Pi
 	if socketUDP.is_listening():
-		socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
+		socketUDP.set_dest_address(UDP_ADDR_CLIENT, UDP_PORT_CLIENT)
 		var packet = PoolByteArray()
 		packet.push_back(SERVO_PACKET_HEADER)
 		
@@ -70,7 +71,7 @@ func send_servo(value):  # Value between 0-100 to be displayed by the servo. Log
 		
 func send_beep(frequency, period):  #period between fixed frequency beeps
 	if socketUDP.is_listening():
-		socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
+		socketUDP.set_dest_address(UDP_ADDR_CLIENT, UDP_PORT_CLIENT)
 		var packet = PoolByteArray()
 		packet.push_back(BEEP_PACKET_HEADER)
 		
@@ -80,13 +81,14 @@ func send_beep(frequency, period):  #period between fixed frequency beeps
 		socketUDP.put_packet(packet)
 
 func send_led(frequency, period):
+	print("Sending led")
 	if socketUDP.is_listening():
-		socketUDP.set_dest_address(UDP_ADDR_SERVER, UDP_PORT_SERVER)
+		socketUDP.set_dest_address(UDP_ADDR_CLIENT, UDP_PORT_CLIENT)
 		var packet = PoolByteArray()
 		packet.push_back(LED_PACKET_HEADER)
 		
-		add_value_to_packet(5, frequency, packet)
-		add_value_to_packet(5, period, packet)
+		packet = add_value_to_packet(5, frequency, packet)
+		packet = add_value_to_packet(5, period, packet)
 		
 		socketUDP.put_packet(packet)
 		
