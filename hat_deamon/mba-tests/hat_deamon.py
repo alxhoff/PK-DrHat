@@ -14,12 +14,12 @@ from periphery import GPIO
 
 DebugOut_Ble = False
 DebugCmd = False
-EnableBeep = False
+EnableBeep = True
 
 #port we are listening on
 HostIP = 1235
 # IP and port of game on laptop
-GameIP = "129.187.151.95"
+GameIP = "129.187.151.90"
 GamePort = 1234
 
 BeaconMacList = [
@@ -253,6 +253,23 @@ def process_ble_scan_output():
             handle_hci_event(line)
 
 
+####################################################################
+
+
+last_btn = []
+
+def process_buttons():
+    global last_btn
+    btn = btns.poll_all()
+    if(not (last_btn == btn)):
+        last_btn = btn
+        print(btn)
+
+
+
+####################################################################
+
+
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(('0.0.0.0', HostIP))
 sock.setblocking(0)
@@ -272,10 +289,7 @@ try:
     while True:
         process_ble_scan_output()
         process_commands()
-        btn = btns.poll_all()
-        if(not (last_btn == btn)):
-            last_btn = btn
-            print(btn)
+        process_buttons()
 
 except:
     traceback.print_exc()
