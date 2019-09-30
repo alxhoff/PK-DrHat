@@ -1,10 +1,10 @@
 extends Node
 
 export (int) var UDP_PORT_SERVER = 1234
-export (String) var UDP_ADDR_SERVER = "129.187.151.95"
+export (String) var UDP_ADDR_SERVER = "0.0.0.0"
 
 export (int) var UDP_PORT_CLIENT = 1235
-export (String) var UDP_ADDR_CLIENT = "129.187.151.129"
+export (String) var UDP_ADDR_CLIENT = "129.187.151.130"
 
 var socketUDP = PacketPeerUDP.new()
 
