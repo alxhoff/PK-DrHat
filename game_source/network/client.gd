@@ -95,7 +95,7 @@ func send_led(frequency, period):
 		
 func start_client():
 	if (socketUDP.listen(UDP_PORT_CLIENT, UDP_ADDR_SERVER) != OK):
-		printt("Client cannot listen on port %d for server %s" % UDP_PORT_CLIENT, UDP_ADDR_SERVER)
+		printt("Client cannot listen on port %d for server %s" % [UDP_PORT_CLIENT, UDP_ADDR_SERVER])
 		exit_client()
 	else:
 		printt("Client can listen on port %d" % UDP_PORT_CLIENT)
