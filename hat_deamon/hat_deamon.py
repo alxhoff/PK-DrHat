@@ -14,6 +14,7 @@ from periphery import GPIO
 
 DebugOut_Ble = False
 DebugCmd = False
+EnableBeep = False
 
 #port we are listening on
 HostIP = 1235
@@ -43,6 +44,8 @@ sock = [] # socket for udp communication with game
 servo = [] # servo object on helmet
 leds = []
 ble_scan_process = [] # handle for the ble scan process running in the background
+btns = []
+beeper =[]
 
 
 class Servo:
@@ -67,9 +70,6 @@ class Servo:
 
     def disable(self):
         self.pwm.enable = False
-
-
-
 
 class Leds:
     leds = [GPIO(0, "out"), GPIO(1, "out")]
@@ -105,8 +105,36 @@ class Leds:
             time.sleep(self.frequency - self.period)
 
 
+class Buttons:
+    btns = {
+        "D" : GPIO(17,"in"),
+        "r" : GPIO(10,"in"),
+        "-" : GPIO(9,"in"),
+        "I" : GPIO(8,"in"),
+        "n" : GPIO(7,"in"),
+        "g" :  GPIO(66, "in"),
+        "Taster" : GPIO(65, "in"),
+    }
 
+    def poll_all(self):
+        return [(k, not v.read()) for k,v in self.btns.items()]
 
+class Beeper:
+    pin = GPIO(3, "Out")
+    def beep(self, frequency, period):
+        print('Beep (Frequ / period) : ', frequency, period)
+        self.on()
+        time.sleep(0.03)
+        self.off()
+
+    def off(self):
+        self.pin.write(False)
+
+    def on(self):
+        if(EnableBeep):
+            self.pin.write(True)
+        else:
+            self.pin.write(False)
 
 def parse_hci_line(line):
     (host_part,rssi_part) = line.rstrip().split(', ')
@@ -158,18 +186,8 @@ def handle_hci_event(line):
 
 def parse_number( data ):
     elements = [str(c) for c in data]
-    #print(elements)
     s = ''.join(elements)
-   # print(s)
-
     return int(s)
-                #print('servo', int(data.decode()[2:]))
-                # numlen = int(data[1])
-                # num = []
-
-                # for i in range(2, len(data)):
-                #     num.append( data[i] + 48 )
-                #     return
 
 def parse_numbers( data ):
     nums = list()
@@ -183,6 +201,8 @@ def parse_numbers( data ):
         nums = nums + [num]
 
     return nums
+
+####################################################################
 
 def process_commands():
     global GameIP
@@ -198,6 +218,7 @@ def process_commands():
 
             if(data[0] == 0x11):
                 frequency, period = parse_numbers(data[1:])
+                beeper.beep(frequency, period)
                 if(DebugCmd):
                     print('Beep: ', data , ' -> (Frequ / period) : ', frequency, period)
                 continue
@@ -238,22 +259,25 @@ sock.setblocking(0)
 
 servo = Servo()
 leds = Leds()
+btns = Buttons()
+beeper = Beeper()
+
+
 leds.enable()
 
 ble_scan_process = subprocess.Popen(['bash', '-c', '../ble/blescan.sh'],stdout=subprocess.PIPE )
 
-gpio_in = GPIO(65, "in")
-
 try:
+    last_btn = btns.poll_all()
     while True:
         process_ble_scan_output()
         process_commands()
-        if(gpio_in.read()):
-            leds.set_frequency(5)
-        else:
-            leds.set_frequency(2)
+        btn = btns.poll_all()
+        if(not (last_btn == btn)):
+            last_btn = btn
+            print(btn)
 
-except Exception as e:
+except:
     traceback.print_exc()
     servo.disable()
-
+    beeper.off()
