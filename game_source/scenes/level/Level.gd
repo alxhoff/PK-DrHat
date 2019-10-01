@@ -87,7 +87,6 @@ func _on_Player_level_completed():
 			else:
 				next_level.init(ic, explore_text[ic-1])
 			current_level = SEARCHING
-		
 
 		add_child(next_level)
 		

@@ -57,13 +57,12 @@ func process_packet(packet): #Rssi packet is 2 bytes, first byte is device id, s
 			signal_averages[device_id].pop_front()
 			signal_averages[device_id].push_back(bt_rssi)
 			var average = 0
-			
 
 			for i in range(signal_averages[device_id].size()):
-				#moving average
+#				moving average
 #				average += signal_averages[device_id][i]
 #			average /= float(signal_averages[device_id].size())
-				#weighted average
+#				#weighted average
 				average += float(i)/SIGNAL_AVERAGE_COUNT * signal_averages[device_id][i]
 			average /= (SIGNAL_TIME_AVERAGE_TOTAL/10)
 			emit_signal("new_bt_rssi", device_id, bt_rssi)

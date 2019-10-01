@@ -1,10 +1,10 @@
 extends Node
 
 export (int) var UDP_PORT_SERVER = 1234
-export (String) var UDP_ADDR_SERVER = "129.187.151.95"
+export (String) var UDP_ADDR_SERVER = "0.0.0.0"
 
 export (int) var UDP_PORT_CLIENT = 1235
-export (String) var UDP_ADDR_CLIENT = "129.187.151.129"
+export (String) var UDP_ADDR_CLIENT = "129.187.151.130"
 
 var socketUDP = PacketPeerUDP.new()
 
@@ -46,9 +46,9 @@ func _ready():
 #	else:
 #		last_test_packet += delta * 1000
 #	pass
+
 		
 func add_value_to_packet(num_len, num, packet):
-	num = 55
 	var num_array = str(num)
 	var num_array_len = num_array.length()
 	if num_len > num_array_len:
@@ -71,33 +71,38 @@ func send_servo(value):  # Value between 0-100 to be displayed by the servo. Log
 			
 		socketUDP.put_packet(packet)
 		
-func send_beep(frequency, period):  #period between fixed frequency beeps
+func send_beep(duty_cycle, period):  #period between fixed frequency beeps
+	
 	if socketUDP.is_listening():
 		socketUDP.set_dest_address(UDP_ADDR_CLIENT, UDP_PORT_CLIENT)
 		var packet = PoolByteArray()
 		packet.push_back(BEEP_PACKET_HEADER)
 		
-		packet = add_value_to_packet(5, frequency, packet)
+		packet = add_value_to_packet(5, duty_cycle, packet)
 		packet = add_value_to_packet(5, period, packet)
 			
 		socketUDP.put_packet(packet)
 
-func send_led(frequency, period):
+func send_led(duty_cycle, period):
+
 	if socketUDP.is_listening():
 		socketUDP.set_dest_address(UDP_ADDR_CLIENT, UDP_PORT_CLIENT)
 		var packet = PoolByteArray()
 		packet.push_back(LED_PACKET_HEADER)
 		
-		packet = add_value_to_packet(5, frequency, packet)
+		packet = add_value_to_packet(5, duty_cycle, packet)
 		packet = add_value_to_packet(5, period, packet)
-		
+
 		socketUDP.put_packet(packet)
 		
 func start_client():
 	if (socketUDP.listen(UDP_PORT_CLIENT, UDP_ADDR_SERVER) != OK):
-		printt("Client cannot listen on port %d for server %s" % UDP_PORT_CLIENT, UDP_ADDR_SERVER)
+		printt("Client cannot listen on port %d for server %s" % [UDP_PORT_CLIENT, UDP_ADDR_SERVER])
 		exit_client()
 	else:
+		send_beep(0,0)
+		send_led(0,0)
+		send_servo(0)
 		printt("Client can listen on port %d" % UDP_PORT_CLIENT)
 		
 func exit_client():

@@ -40,7 +40,7 @@ var intro_strings = [
 "Now go"
 ]
 
-var string_index = 37
+var string_index = 26
 var level_complete = false
 
 var paper_sprite = preload("res://sprites/items/Item__38.png")
