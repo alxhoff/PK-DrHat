@@ -58,9 +58,9 @@ var explore_text = [
 "Seems like my signal has a poor resolution",
 "Looks like the duty cycle is improving",
 "Looks like a strange light is signaling",
-"What is that sound?!?!",
+"All systems go!",
 "Rise of the machines!",
-"All systems go!"
+"What is that sound?!?!"
 ]
 
 func _on_Player_level_completed():
@@ -123,3 +123,7 @@ func _on_UDPServer_new_bt_rssi(device, strength):
 	if cur_level.LEVEL_NAME == "Explore":
 		cur_level.set_signal(device, strength)
 
+func _on_UDPServer_letters_updated(count):
+	var cur_level = $CurrentLevel
+	if cur_level.LEVEL_NAME == "Explore":
+		cur_level.set_letters(count)

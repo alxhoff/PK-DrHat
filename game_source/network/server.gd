@@ -20,10 +20,12 @@ export (String) var UDP_ADDR_SERVER = "129.187.151.95"
 export (int) var UDP_PORT_CLIENT = 1235
 
 const RSSI_PACKET_HEADER = 0x10
+const DR_ING_LETTERS_HEADER = 0x16
 
 var socketUDP = PacketPeerUDP.new()
 
 signal new_bt_rssi(device, strength)
+signal letters_updated(count)
 
 func _ready():
 	init_averages()
@@ -46,26 +48,41 @@ func _process(delta):
 	
 func process_packet(packet): #Rssi packet is 2 bytes, first byte is device id, second is rssi 0-255
 	var header = packet.subarray(0,0)[0]
-	if header == RSSI_PACKET_HEADER:
+	if header == RSSI_PACKET_HEADER or header == DR_ING_LETTERS_HEADER:
 		var bt_device = packet.subarray(1,6)
-		var bt_rssi = packet.subarray(7,7)[0]
-		print("BT DEV: %x:%x:%x:%x:%x:%x RSSI: %d" % [bt_device[0],bt_device[1],bt_device[2],bt_device[3],bt_device[4],bt_device[5], bt_rssi])
-		bt_rssi = float(bt_rssi)
-		var device_id = match_device(bt_device)
-		if device_id >= 0:
-			bt_rssi = round(bt_rssi)
-			signal_averages[device_id].pop_front()
-			signal_averages[device_id].push_back(bt_rssi)
-			var average = 0
 
-			for i in range(signal_averages[device_id].size()):
-#				moving average
-#				average += signal_averages[device_id][i]
-#			average /= float(signal_averages[device_id].size())
-#				#weighted average
-				average += float(i)/SIGNAL_AVERAGE_COUNT * signal_averages[device_id][i]
-			average /= (SIGNAL_TIME_AVERAGE_TOTAL/10)
-			emit_signal("new_bt_rssi", device_id, bt_rssi)
+		if header == RSSI_PACKET_HEADER:
+			var bt_rssi = packet.subarray(7,7)[0]
+			print("BT DEV: %x:%x:%x:%x:%x:%x RSSI: %d" % [bt_device[0],bt_device[1],bt_device[2],bt_device[3],bt_device[4],bt_device[5], bt_rssi])
+			bt_rssi = float(bt_rssi)
+			var device_id = match_device(bt_device)
+			if device_id >= 0:
+				bt_rssi = round(bt_rssi)
+				signal_averages[device_id].pop_front()
+				signal_averages[device_id].push_back(bt_rssi)
+				var average = 0
+	
+				for i in range(signal_averages[device_id].size()):
+					average += signal_averages[device_id][i]
+				average /= float(signal_averages[device_id].size())
+				emit_signal("new_bt_rssi", device_id, bt_rssi)
+		
+		elif header == DR_ING_LETTERS_HEADER:
+			var letters = packet.subarray(2,7)
+			var count = 0
+			if letters[0]:
+				count = 1
+			if letters[1]:
+				count = 2
+			if letters[2]:
+				count = 3
+			if letters[3]:
+				count = 4
+			if letters[4]:
+				count = 5
+			if letters[5]:
+				count = 6 
+			emit_signal("letters_updated", count)
 	
 func match_device(mac_addr):
 	for i in range(0, test_macs.size()):

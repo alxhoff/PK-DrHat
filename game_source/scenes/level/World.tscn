@@ -28,7 +28,7 @@ layer = -1
 [node name="CurrentLevel" parent="Level" instance=ExtResource( 6 )]
 
 [node name="AnimatedSprite" parent="Level/CurrentLevel/Player" index="0"]
-frame = 2
+frame = 3
 
 [node name="BackgrounMusic" parent="." instance=ExtResource( 7 )]
 volume_db = -3.0
@@ -43,6 +43,7 @@ script = ExtResource( 9 )
 [connection signal="UI_item_count_updated" from="Items" to="ItemsUI" method="_on_Items_UI_item_count_updated"]
 [connection signal="inventory_item_count_updated" from="Items" to="Inventory" method="_on_Items_inventory_item_count_updated"]
 [connection signal="level_completed" from="Level/CurrentLevel/Player" to="Level" method="_on_Player_level_completed"]
+[connection signal="letters_updated" from="Network/UDPServer" to="Level" method="_on_UDPServer_letters_updated"]
 [connection signal="new_bt_rssi" from="Network/UDPServer" to="Level" method="_on_UDPServer_new_bt_rssi"]
 
 [editable path="Level/CurrentLevel"]

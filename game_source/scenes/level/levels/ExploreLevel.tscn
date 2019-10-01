@@ -71,7 +71,7 @@ position = Vector2( -200, 20 )
 scale = Vector2( 9, 9 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 6
+frame = 5
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
