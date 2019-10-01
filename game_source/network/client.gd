@@ -4,7 +4,7 @@ export (int) var UDP_PORT_SERVER = 1234
 export (String) var UDP_ADDR_SERVER = "0.0.0.0"
 
 export (int) var UDP_PORT_CLIENT = 1235
-export (String) var UDP_ADDR_CLIENT = "129.187.151.130"
+export (String) var UDP_ADDR_CLIENT = "172.24.1.1"
 
 var socketUDP = PacketPeerUDP.new()
 
@@ -81,7 +81,7 @@ func send_led(duty_cycle, period):
 		
 		packet = add_value_to_packet(5, duty_cycle, packet)
 		packet = add_value_to_packet(5, period, packet)
-
+		print("Sent led packet to %s on port %d" % [UDP_ADDR_CLIENT, UDP_PORT_CLIENT])
 		socketUDP.put_packet(packet)
 		
 func start_client():

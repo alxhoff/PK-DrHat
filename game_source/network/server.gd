@@ -16,7 +16,6 @@ var SIGNAL_TIME_AVERAGE_TOTAL = SIGNAL_AVERAGE_COUNT * (SIGNAL_AVERAGE_COUNT + 1
 const test_macs = [test_mac_1, test_mac_2, test_mac_3, test_mac_4, test_mac_5, test_mac_6]
 
 export (int) var UDP_PORT_SERVER = 1234
-export (String) var UDP_ADDR_SERVER = "129.187.151.95"
 export (int) var UDP_PORT_CLIENT = 1235
 
 const RSSI_PACKET_HEADER = 0x10

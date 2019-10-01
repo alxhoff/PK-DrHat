@@ -40,9 +40,9 @@
 [ext_resource path="res://sprites/npc/goblin_idle_anim_f3.png" type="Texture" id=38]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=39]
 [ext_resource path="res://scenes/player/Guide.tscn" type="PackedScene" id=40]
-[ext_resource path="res://scenes/player/PlayerAnimationPlayer.tscn" type="PackedScene" id=41]
-[ext_resource path="res://scenes/player/AnimatedNPC.tscn" type="PackedScene" id=42]
-[ext_resource path="res://scenes/tilesets/MagicForest.tres" type="TileSet" id=43]
+[ext_resource path="res://scenes/player/AnimatedNPC.tscn" type="PackedScene" id=41]
+[ext_resource path="res://scenes/tilesets/MagicForest.tres" type="TileSet" id=42]
+[ext_resource path="res://scenes/player/PlayerAnimationPlayer.tscn" type="PackedScene" id=43]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -144,7 +144,6 @@ position = Vector2( 352.381, 189.48 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "demon"
-frame = 3
 playing = true
 flip_h = true
 
@@ -153,6 +152,7 @@ position = Vector2( 468.984, 203.198 )
 scale = Vector2( 8, 8 )
 frames = SubResource( 1 )
 animation = "imp"
+frame = 2
 playing = true
 flip_h = true
 
@@ -161,27 +161,27 @@ position = Vector2( 403.824, 208.342 )
 scale = Vector2( 6, 6 )
 frames = SubResource( 1 )
 animation = "necromancer"
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
 [node name="Player" parent="." instance=ExtResource( 39 )]
 editor/display_folded = true
-position = Vector2( -10, 20 )
+position = Vector2( -200, 20 )
 scale = Vector2( 7, 7 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
+frame = 3
 flip_h = true
 
 [node name="Guide" parent="." instance=ExtResource( 40 )]
-editor/display_folded = true
 position = Vector2( 348.095, 198.054 )
 scale = Vector2( 5, 5 )
 
 [node name="AnimatedSprite" parent="Guide" index="0"]
 position = Vector2( -12.3462, 0 )
 animation = "Wizzard"
-frame = 1
+frame = 2
 
 [node name="SpeachBubble" parent="Guide" index="1"]
 position = Vector2( -51.2102, -40.9422 )
@@ -190,18 +190,14 @@ position = Vector2( -51.2102, -40.9422 )
 position = Vector2( -49, -7.167 )
 rotation = -0.159513
 
-[node name="AnimationPlayer" parent="Guide" instance=ExtResource( 41 )]
-anims/WalkOut = SubResource( 2 )
-
-[node name="AnimatedSprite2" parent="." instance=ExtResource( 42 )]
-frame = 2
+[node name="AnimatedSprite2" parent="." instance=ExtResource( 41 )]
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
 position = Vector2( 383.247, 222.918 )
 scale = Vector2( 6, 6 )
 frames = SubResource( 1 )
 animation = "goblin"
-frame = 1
+frame = 2
 playing = true
 flip_h = true
 
@@ -210,7 +206,7 @@ position = Vector2( 413.255, 232.349 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "skeleton"
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
@@ -219,16 +215,18 @@ position = Vector2( 240.065, 235.778 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "wogol"
-frame = 3
 playing = true
 flip_h = true
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 1.5, 1.5 )
-tile_set = ExtResource( 43 )
+tile_set = ExtResource( 42 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 589823, 0, 0, 589828, 5, 0, 720905, 3, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0 )
+
+[node name="AnimationPlayer" parent="." instance=ExtResource( 43 )]
+anims/WalkOut = SubResource( 2 )
 
 [editable path="Player"]
 

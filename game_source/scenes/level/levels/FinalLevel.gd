@@ -15,6 +15,8 @@ var string_index = 0
 var level_complete = false
 
 func _ready():
+	$Player.position = Vector2(-200,20)
+	$AnimationPlayer.play("WalkIn")
 	$Player/AnimatedSprite.flip_h = false
 
 func _physics_process(delta):

@@ -103,29 +103,33 @@ func set_target_becon(dev_num):
 	target_set = true
 
 func _physics_process(delta):
-
-	if item_count == 3:
-		var cur_val = signals[item_count - 1].get_value()
-		if prev_led != cur_val:
-			var led_vals = get_led_values(cur_val)
-			prev_led = cur_val
-			emit_signal("update_led", led_vals[0], led_vals[1])
-
-	elif item_count == 6: #BUZZER
-		var cur_val = signals[item_count - 1].get_value()
-		if prev_buzzer != cur_val:
-			var buzzer_vals = get_buzzer_values(cur_val)
-			prev_buzzer = cur_val
-			emit_signal("update_buzzer", buzzer_vals[0], buzzer_vals[1])
-
-	elif item_count == 5: #SERVO
-		var cur_val = signals[item_count - 1].get_value()
-		if prev_servo != cur_val:
-			var servo_vals = get_servo_values(cur_val)
-			prev_servo = cur_val
-			emit_signal("update_servo", servo_vals)
-
-	check_level_completion()
+	if level_completed == false:
+		if item_count >= 3:
+			var cur_val = signals[item_count - 1].get_value()
+			if prev_led != cur_val:
+				var led_vals = get_led_values(cur_val)
+				prev_led = cur_val
+				emit_signal("update_led", led_vals[0], led_vals[1])
+	
+		elif item_count >= 6: #BUZZER
+			var cur_val = signals[item_count - 1].get_value()
+			if prev_buzzer != cur_val:
+				var buzzer_vals = get_buzzer_values(cur_val)
+				prev_buzzer = cur_val
+				emit_signal("update_buzzer", buzzer_vals[0], buzzer_vals[1])
+	
+		elif item_count >= 5: #SERVO
+			var cur_val = signals[item_count - 1].get_value()
+			if prev_servo != cur_val:
+				var servo_vals = get_servo_values(cur_val)
+				prev_servo = cur_val
+				emit_signal("update_servo", servo_vals)
+	
+		check_level_completion()
+	else:
+		emit_signal("update_led", 0, 0)
+		emit_signal("update_buzzer", 0, 0)
+		emit_signal("update_servo", 0)
 	
 #0% signal = 1000 second DS 
 #100% signal = 200ms DS 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/level/levels/ItemReceiveLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/tilesets/MagicForest.tres" type="TileSet" id=3]
 [ext_resource path="res://scenes/player/Guide.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/player/PlayerAnimationPlayer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/AudioStreamPlayer2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/player/PlayerAnimationPlayer.tscn" type="PackedScene" id=6]
 
 [node name="ItemReceiveLevel" type="Node"]
 script = ExtResource( 1 )
@@ -14,7 +15,7 @@ position = Vector2( -200, 20 )
 scale = Vector2( 7, 7 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 2
+frame = 0
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 1.5, 1.5 )
@@ -30,9 +31,10 @@ z_index = -1
 
 [node name="AnimatedSprite" parent="Guide" index="0"]
 animation = "Wizzard"
-frame = 1
 
-[node name="AnimationPlayer" parent="." instance=ExtResource( 5 )]
+[node name="AudioStreamPlayer2D" parent="Guide" instance=ExtResource( 5 )]
+
+[node name="AnimationPlayer" parent="." instance=ExtResource( 6 )]
 
 [editable path="Player"]
 

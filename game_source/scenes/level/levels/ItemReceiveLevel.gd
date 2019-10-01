@@ -47,7 +47,7 @@ func _physics_process(delta):
 					if string_index == 0:
 						$Guide.delay(4)
 						
-					$Guide.say_string(intro_strings[string_index], 0.5)
+					$Guide.say_string(intro_strings[string_index], 1)
 					string_index += 1
 					
 					if string_index == 5:
