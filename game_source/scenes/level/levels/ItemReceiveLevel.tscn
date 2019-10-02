@@ -14,9 +14,6 @@ script = ExtResource( 1 )
 position = Vector2( -200, 20 )
 scale = Vector2( 7, 7 )
 
-[node name="AnimatedSprite" parent="Player" index="0"]
-frame = 0
-
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 1.5, 1.5 )
 tile_set = ExtResource( 3 )
@@ -31,6 +28,7 @@ z_index = -1
 
 [node name="AnimatedSprite" parent="Guide" index="0"]
 animation = "Wizzard"
+frame = 2
 
 [node name="AudioStreamPlayer2D" parent="Guide" instance=ExtResource( 5 )]
 

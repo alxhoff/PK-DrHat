@@ -42,6 +42,9 @@ func _ready():
 	
 	$Player.position = Vector2(-200,37)
 	$AnimationPlayer.play("WalkIn")
+	emit_signal("update_led", 0, 0)
+	emit_signal("update_buzzer", 0, 0)
+	emit_signal("update_servo", 0)
 	
 func speak():
 	$SpeachBubble.say_text(speech_text, 3)
@@ -69,19 +72,19 @@ $HBoxContainer/BtBars/VBoxContainer/SB6
 	#Set up level
 	if ic == 1 or ic == 0:
 		set_signal_bars_visibility([0])
-		set_signal_update_period(100)
-		set_signal_granularity(10)
+		set_signal_update_period(20)
+		set_signal_granularity(5)
 	elif ic == 2:
 		set_signal_bars_visibility([0,1])
-		set_signal_update_period(500)
-		set_signal_granularity(20)
+		set_signal_update_period(20)
+		set_signal_granularity(5)
 	elif ic == 3:
 		set_signal_bars_visibility([])
 		$HBoxContainer/BtBars/LED.visible = true
 		pass
 	elif ic == 4:
 		set_signal_bars_visibility(range(4))
-		set_signal_update_period(200)
+		set_signal_update_period(20)
 		set_signal_granularity(5)
 		pass
 	elif ic == 5:
@@ -92,6 +95,7 @@ $HBoxContainer/BtBars/VBoxContainer/SB6
 		set_signal_bars_visibility([])
 		$HBoxContainer/BtBars/BUZZER.visible = true
 		pass
+		
 	
 func check_level_completion():
 	if target_set:
@@ -104,21 +108,21 @@ func set_target_becon(dev_num):
 
 func _physics_process(delta):
 	if level_completed == false:
-		if item_count >= 3:
+		if item_count >= 1:
 			var cur_val = signals[item_count - 1].get_value()
 			if prev_led != cur_val:
 				var led_vals = get_led_values(cur_val)
 				prev_led = cur_val
 				emit_signal("update_led", led_vals[0], led_vals[1])
 	
-		elif item_count >= 6: #BUZZER
+		if item_count >= 6: #BUZZER
 			var cur_val = signals[item_count - 1].get_value()
 			if prev_buzzer != cur_val:
 				var buzzer_vals = get_buzzer_values(cur_val)
 				prev_buzzer = cur_val
 				emit_signal("update_buzzer", buzzer_vals[0], buzzer_vals[1])
 	
-		elif item_count >= 5: #SERVO
+		if item_count >= 5: #SERVO
 			var cur_val = signals[item_count - 1].get_value()
 			if prev_servo != cur_val:
 				var servo_vals = get_servo_values(cur_val)
@@ -134,7 +138,7 @@ func _physics_process(delta):
 #0% signal = 1000 second DS 
 #100% signal = 200ms DS 
 func get_led_values(value):
-	var duty_cycle = value
+	var duty_cycle = value + 1
 	var interval = -19 * value + 2000
 
 	return [duty_cycle, interval]

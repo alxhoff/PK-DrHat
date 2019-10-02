@@ -71,7 +71,7 @@ position = Vector2( -200, 20 )
 scale = Vector2( 9, 9 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 1
+frame = 5
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -221,11 +221,12 @@ __meta__ = {
 anims/swing = SubResource( 3 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 41.1651
-margin_top = 36.0194
-margin_right = 153.165
-margin_bottom = 56.0194
-text = "SKIP LEVEL TEST"
+visible = false
+margin_left = 3.69788
+margin_top = 2.62471
+margin_right = 115.698
+margin_bottom = 22.6247
+text = "FINISH LEVEL"
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_left = 174.779

@@ -1,16 +1,16 @@
 extends Node
 
 const test_mac_1 = [0xB8,0x27,0xEB,0x9A,0x9F,0x91]
-const test_mac_2 = [0xA0,0xE6,0xF8,0xB6,0x5D,0x05]
-const test_mac_3 = [0xA0,0xE6,0xF8,0xB6,0x5B,0x83]
-const test_mac_4 = [0xA0,0xE6,0xF8,0xB6,0x10,0x00]
-const test_mac_5 = [0xB8,0x27,0xEB,0x5E,0xCB,0xFD]
-const test_mac_6 = [0xB8,0x27,0xEB,0x7F,0x96,0xF9]
+const test_mac_2 = [0xB8,0x27,0xEB,0x5E,0xCB,0xFD]
+const test_mac_3 = [0xA0,0xE6,0xF8,0xB6,0x10,0x00]
+const test_mac_4 = [0xA0,0xE6,0xF8,0xB6,0x5D,0x05]
+const test_mac_5 = [0xB8,0x27,0xEB,0x7F,0x96,0xF9]
+const test_mac_6 = [0xA0,0xE6,0xF8,0xB6,0x5B,0x83]
 
 const DEV_COUNT = 6
 var signal_averages = []
 
-const SIGNAL_AVERAGE_COUNT = 10
+const SIGNAL_AVERAGE_COUNT = 30
 var SIGNAL_TIME_AVERAGE_TOTAL = SIGNAL_AVERAGE_COUNT * (SIGNAL_AVERAGE_COUNT + 1)/2
 
 const test_macs = [test_mac_1, test_mac_2, test_mac_3, test_mac_4, test_mac_5, test_mac_6]
@@ -52,6 +52,8 @@ func process_packet(packet): #Rssi packet is 2 bytes, first byte is device id, s
 
 		if header == RSSI_PACKET_HEADER:
 			var bt_rssi = packet.subarray(7,7)[0]
+			if bt_rssi == 0:
+				return
 			print("BT DEV: %x:%x:%x:%x:%x:%x RSSI: %d" % [bt_device[0],bt_device[1],bt_device[2],bt_device[3],bt_device[4],bt_device[5], bt_rssi])
 			bt_rssi = float(bt_rssi)
 			var device_id = match_device(bt_device)
