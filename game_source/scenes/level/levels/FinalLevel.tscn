@@ -95,7 +95,7 @@ animations = [ {
 [sub_resource type="Animation" id=2]
 length = 4.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player:position")
+tracks/0/path = NodePath("Player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -107,7 +107,7 @@ tracks/0/keys = {
 "values": [ Vector2( -10, 20 ), Vector2( -200, 20 ), Vector2( -400, 20 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Player/AnimatedSprite:flip_h")
+tracks/1/path = NodePath("Player/AnimatedSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -119,7 +119,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("../Player")
+tracks/2/path = NodePath("Player")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -144,7 +144,7 @@ position = Vector2( 352.381, 189.48 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "demon"
-frame = 1
+frame = 2
 playing = true
 flip_h = true
 
@@ -153,7 +153,7 @@ position = Vector2( 468.984, 203.198 )
 scale = Vector2( 8, 8 )
 frames = SubResource( 1 )
 animation = "imp"
-frame = 2
+frame = 1
 playing = true
 flip_h = true
 
@@ -162,6 +162,7 @@ position = Vector2( 403.824, 208.342 )
 scale = Vector2( 6, 6 )
 frames = SubResource( 1 )
 animation = "necromancer"
+frame = 1
 playing = true
 flip_h = true
 
@@ -171,7 +172,7 @@ position = Vector2( -200, 20 )
 scale = Vector2( 7, 7 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 0
+frame = 1
 flip_h = true
 
 [node name="Guide" parent="." instance=ExtResource( 40 )]
@@ -181,6 +182,7 @@ scale = Vector2( 5, 5 )
 [node name="AnimatedSprite" parent="Guide" index="0"]
 position = Vector2( -12.3462, 0 )
 animation = "Wizzard"
+frame = 1
 
 [node name="SpeachBubble" parent="Guide" index="1"]
 position = Vector2( -51.2102, -40.9422 )
@@ -190,14 +192,13 @@ position = Vector2( -49, -7.167 )
 rotation = -0.159513
 
 [node name="AnimatedSprite2" parent="." instance=ExtResource( 41 )]
-frame = 2
+frame = 3
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
 position = Vector2( 383.247, 222.918 )
 scale = Vector2( 6, 6 )
 frames = SubResource( 1 )
 animation = "goblin"
-frame = 3
 playing = true
 flip_h = true
 
@@ -206,6 +207,7 @@ position = Vector2( 413.255, 232.349 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "skeleton"
+frame = 1
 playing = true
 flip_h = true
 
@@ -214,7 +216,7 @@ position = Vector2( 240.065, 235.778 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "wogol"
-frame = 1
+frame = 2
 playing = true
 flip_h = true
 
