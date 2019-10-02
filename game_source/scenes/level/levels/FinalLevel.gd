@@ -34,4 +34,4 @@ func _physics_process(delta):
 
 func level_finished():
 	level_complete = true
-	$AnimationPlayer.play("WalkOut")
+#	$Guide/AnimationPlayer.play("WalkOut")

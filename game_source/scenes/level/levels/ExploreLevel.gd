@@ -82,8 +82,8 @@ $HBoxContainer/BtBars/VBoxContainer/SB6
 		set_signal_bars_visibility([])
 		$HBoxContainer/BtBars/LED.visible = true
 		pass
-	elif ic == 4:
-		set_signal_bars_visibility(range(4))
+	elif ic == 6:
+		set_signal_bars_visibility(range(6))
 		set_signal_update_period(20)
 		set_signal_granularity(5)
 		pass
@@ -91,7 +91,7 @@ $HBoxContainer/BtBars/VBoxContainer/SB6
 		set_signal_bars_visibility([])
 		$HBoxContainer/BtBars/SERVO.visible = true
 		pass
-	elif ic == 6:		
+	elif ic == 4:		
 		set_signal_bars_visibility([])
 		$HBoxContainer/BtBars/BUZZER.visible = true
 		pass
@@ -115,7 +115,7 @@ func _physics_process(delta):
 				prev_led = cur_val
 				emit_signal("update_led", led_vals[0], led_vals[1])
 	
-		if item_count >= 6: #BUZZER
+		if item_count >= 4: #BUZZER
 			var cur_val = signals[item_count - 1].get_value()
 			if prev_buzzer != cur_val:
 				var buzzer_vals = get_buzzer_values(cur_val)

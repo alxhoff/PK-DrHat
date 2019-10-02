@@ -71,7 +71,7 @@ position = Vector2( -200, 20 )
 scale = Vector2( 9, 9 )
 
 [node name="AnimatedSprite" parent="Player" index="0"]
-frame = 5
+frame = 3
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -221,7 +221,6 @@ __meta__ = {
 anims/swing = SubResource( 3 )
 
 [node name="Button" type="Button" parent="."]
-visible = false
 margin_left = 3.69788
 margin_top = 2.62471
 margin_right = 115.698

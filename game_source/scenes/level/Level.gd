@@ -58,9 +58,9 @@ var explore_text = [
 "Seems like my signal has a poor resolution",
 "Looks like the duty cycle is improving",
 "Looks like a strange light is signaling",
-"All systems go!",
+"What is that sound?!?!",
 "Rise of the machines!",
-"What is that sound?!?!"
+"All systems go!"
 ]
 
 func _on_Player_level_completed():
